@@ -61,6 +61,18 @@ set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 set(USE_CSPICE ON)
 
 add_subdirectory( "${PROJECTROOT}/cspice/")
+
+#
+# JSONCPP
+#
+# Add the JSONCPP project and build
+set(JSONCPP_WITH_TESTS OFF CACHE BOOL "Building of JSONCPP tests.")
+set(JSONCPP_WITH_PKGCONFIG_SUPPORT OFF CACHE BOOL "Buliding of PKGCONFIG files.")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/jsoncpp/lib CACHE PATH "Path for building JSONCPP library in.")
+add_subdirectory( "${PROJECTROOT}/jsoncpp/")
+# Unset library output dir to prevent screwing with other packages
+unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY CACHE)
+
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
 #add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
 #add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
