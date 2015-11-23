@@ -44,9 +44,12 @@ install_manifest.txt
 #
 # Build and doxygen related
 #
+Documentation/
 doc/doxygen/html/
 doc/doxygen/latex/
 build*/
+bin/
+lib/
 
 #
 # Editor related
@@ -55,3 +58,5 @@ build*/
 *#
 .#*
 *.autosave
+*.~?~
+*.save
