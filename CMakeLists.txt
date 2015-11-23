@@ -58,8 +58,10 @@ enable_testing( )
 
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 
+#
+# SPICE
+#
 set(USE_CSPICE ON)
-
 add_subdirectory( "${PROJECTROOT}/cspice/")
 
 #
@@ -73,6 +75,16 @@ add_subdirectory( "${PROJECTROOT}/jsoncpp/")
 # Unset library output dir to prevent screwing with other packages
 unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY CACHE)
 
+#
+# NRLMSISE
+#
+# Add the NRLMSISE project and build
+set(NRLMSISE00_WITH_TESTS OFF CACHE BOOL "Building of NRLMSISE00 tests.")
+add_subdirectory( "${PROJECTROOT}/nrlmsise-00/")
+
+#
+# Tudat and applications
+#
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
 #add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
 #add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
