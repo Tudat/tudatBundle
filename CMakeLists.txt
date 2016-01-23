@@ -56,6 +56,19 @@ set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
 
 enable_testing( )
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/tudat/Tudat/External/CMake/")
+
+message(STATUS ${CMAKE_MODULE_PATH})
+message(STATUS ${PROJECT_SOURCE_DIR})
+
+find_package(Boost 1.53 
+    COMPONENTS  filesystem system thread regex)
+if(Boost_FOUND)
+message(STATUS "Boost ${Boost_VERSION} found in ${Boost_INCLUDE_DIRS}")
+else()
+include(add_boost)
+endif()
+
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 
 #

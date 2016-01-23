@@ -50,6 +50,7 @@ doc/doxygen/latex/
 build*/
 bin/
 lib/
+boost/
 
 #
 # Editor related
