@@ -46,15 +46,29 @@
  #
 
 # Specify minimum CMake version required to compile Tudat.
-cmake_minimum_required( VERSION 2.6 )
+cmake_minimum_required( VERSION 2.8.10 )
 
 # Specific Tudat project name.
 project( TudatBundle )
+
+set(BoostComponents filesystem system thread regex date_time unit_test_framework)
 
 # Set root-directory for code to current source directory.
 set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
 
 enable_testing( )
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/tudat/Tudat/External/CMake/")
+
+message(STATUS ${CMAKE_MODULE_PATH})
+message(STATUS ${PROJECT_SOURCE_DIR})
+
+find_package(Boost 1.53 COMPONENTS ${BoostComponents})
+if(Boost_FOUND)
+  message(STATUS "Boost ${Boost_VERSION} found in ${Boost_INCLUDE_DIRS}")
+else()
+  include(add_boost)
+endif()
 
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 
@@ -87,6 +101,6 @@ add_subdirectory( "${PROJECTROOT}/nrlmsise-00/")
 #
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
-add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
+#add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
 #add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
 

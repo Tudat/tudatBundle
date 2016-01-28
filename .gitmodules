@@ -16,3 +16,6 @@
 [submodule "jsoncpp"]
 	path = jsoncpp
 	url = https://github.com/open-source-parsers/jsoncpp.git
+[submodule "boost"]
+	path = boost
+	url = https://github.com/boostorg/boost.git
