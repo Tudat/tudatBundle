@@ -8,7 +8,7 @@ This document contains minimal information on how to build the Tudat bundle. For
 
 1. Clone the repository on your computer (or fork and then clone)
 
-        git clone https://github.com/magnific0/tudatBundle.git
+        git clone https://github.com/tudat/tudatBundle.git
 
 2. Enter the new directory
 
