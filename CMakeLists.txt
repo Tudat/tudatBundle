@@ -14,8 +14,8 @@ cmake_minimum_required( VERSION 2.8.10 )
 project( TudatBundle )
 
 # Package options
-option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." OFF)
-option(USE_JSONCPP  "Build JSONCPP library and example applications." ON)
+option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
+option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
 option(USE_PAGMO    "Build PaGMO library." OFF)
 
