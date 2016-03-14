@@ -1,4 +1,10 @@
 #
+# Private
+#
+# Do not track user-applications by default.
+tudatApplications/
+
+#
 # CMake 
 #
 CMakeCache.txt

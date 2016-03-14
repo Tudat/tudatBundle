@@ -36,17 +36,27 @@ Note: it can happen that due to dependencies between the submodules the ```make`
 ### Switching on/off libraries and applications
 </a>
 
-1. Edit ```CMakeLists.txt```
+By default only the SPICE library is build. You can enable/disable which libraries are build by manipulating special use switches:
 
-2. Comment out or add new ```add_subdirectory``` lines. The argument of ```add_subdirectory``` should be the path containing the library's or application's CMakeLists.txt.
+1. Each library has such a switch, these are: ```USE_CSPICE```, ```USE_JSONCPP```, ```USE_NRLMSISE``` and ```USE_PAGMO```.
+
+2. You can turn on or off such a switch as an argument to CMake. For instance, the following will disable SPICE, but enable the nrlmsise-00 atmopshere model:
+
+        cmake ../ -DUSE_CSPICE=0 -DUSE_NRLMSISE=1
+
+Detailed control and to specification of detailed build options for external libraries (like building of examples and tests) can be achieved by editing ```CMakeLists.txt```.
 
 ### Creating your own applications
 
-1. Copy the ```templateApplication``` from ```tudatExampleApplications``` to tudatApplications and give it your own name
+1. Copy the ```templateApplication``` from ```tudatExampleApplications``` to tudatApplications and give it your own name:
 
         cp -R tudatExampleApplications/templateApplication tudatApplications/myApplication
+        cd tudatApplications/myApplication
+        mv TemplateApplication MyApplication
 
-2. Add your project to the central ```CMakeLists.txt```, see [intructions above](#switching_apps).
+2. Add your project to the top-level ```CMakeLists.txt```, like so:
+
+        add_subdirectory("${PROJECTROOT}/tudatApplications/myApplication/MyApplication")
 
 3. Re-run cmake and make commands.
 
