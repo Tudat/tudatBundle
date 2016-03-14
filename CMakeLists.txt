@@ -18,6 +18,7 @@ option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example a
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
 option(USE_PAGMO    "Build PaGMO library." OFF)
+option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
 
 # Set root-directory for code to current source directory.
 set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
@@ -32,9 +33,15 @@ message(STATUS ${PROJECT_SOURCE_DIR})
 #
 # Boost
 #
+# Set the required boost components (for Tudat)
 set(BoostComponents filesystem system thread regex date_time unit_test_framework)
+# Add additional required boost componets for other libraries
+# if these are used.
 if(USE_PAGMO)
-  list(APPEND BoostComponents serialization chrono atomic python python3)
+  list(APPEND BoostComponents serialization chrono atomic)
+endif()
+if(USE_PYGMO)
+  list(APPEND BoostComponents python python3)
 endif()
 # Pick a boost version
 # set(BoostVersion 1.60.0)
@@ -82,15 +89,7 @@ endif()
 #
 # Add the PaGMO project and build
 if(USE_PAGMO)
-  # Patch PaGMO cmake files
-  set(ppfiles "pagmo/CMakeLists.txt" "pagmo/cmake_scripts/python_setup.cmake")
-  foreach(ppfile ${ppfiles})
-    file(READ ${ppfile} FILE_CONTENT)
-    string(REGEX REPLACE "CMAKE_SOURCE_DIR" "CMAKE_CURRENT_SOURCE_DIR"
-        MODIFIED_FILE_CONTENT "${FILE_CONTENT}")
-    file(WRITE ${ppfile} "${MODIFIED_FILE_CONTENT}")
-  endforeach()
-  OPTION(BUILD_PYGMO    "Build PaGMO with Python bindings." OFF)
+  OPTION(BUILD_PYGMO    "Build PaGMO with Python bindings." ${USE_PYGMO})
   OPTION(ENABLE_TESTS   "Build PaGMO with test set."        OFF)
   OPTION(BUILD_EXAMPLES "Build PaGMO with examples."        OFF)
   set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pagmo/lib"
