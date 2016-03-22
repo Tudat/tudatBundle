@@ -15,8 +15,9 @@ project( TudatBundle )
 
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
-option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
-option(USE_NRLMSISE "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
+option(USE_JSONCPP  "Build JSONCPP library and example applications." ON)
+option(USE_GSL      "Build GSL library and example applications." OFF)
+option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
 option(USE_PAGMO    "Build PaGMO library." OFF)
 
 # Set root-directory for code to current source directory.
@@ -72,7 +73,7 @@ endif()
 # NRLMSISE
 #
 # Add the NRLMSISE project and build
-if(USE_NRLMSISE)
+if(USE_NRLMSISE00)
   set(NRLMSISE00_WITH_TESTS OFF CACHE BOOL "Building of NRLMSISE00 tests.")
   add_subdirectory( "${PROJECTROOT}/nrlmsise-00/")
 endif()
@@ -113,5 +114,8 @@ add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
 if(USE_CSPICE AND USE_JSONCPP)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
+endif()
+if(USE_GSL)
+    add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/GSL/")
 endif()
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
