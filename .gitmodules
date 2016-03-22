@@ -22,3 +22,6 @@
 [submodule "pagmo"]
 	path = pagmo
 	url = https://github.com/esa/pagmo
+[submodule "gsl"]
+	path = gsl
+	url = https://github.com/ampl/gsl.git
