@@ -113,4 +113,7 @@ add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorEx
 if(USE_CSPICE AND USE_JSONCPP)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
 endif()
+if(USE_PAGMO)
+  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx/")
+endif()
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
