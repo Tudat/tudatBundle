@@ -16,7 +16,7 @@ project( TudatBundle )
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." ON)
-option(USE_GSL      "Build GSL library and example applications." OFF)
+option(USE_GSL      "Build GSL library and example applications." ON)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
 option(USE_PAGMO    "Build PaGMO library." OFF)
 
@@ -79,6 +79,45 @@ if(USE_NRLMSISE00)
 endif()
 
 #
+# GSL - GNU Scientific Library
+#
+# Add the GSL project and build
+if(USE_GSL)
+  set(GSL_WITH_TESTS OFF CACHE BOOL "Building of GSL tests.") # Has no effect yet..
+  message(STATUS "Building GSL")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/gsl/lib"
+    CACHE PATH "Path for building static GSL library in.")
+
+    add_subdirectory( "${PROJECTROOT}/gsl/")
+
+    SET(GSL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/gsl/include")
+    SET(GSL_LIBRARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/gsl/lib")
+    file(MAKE_DIRECTORY "${GSL_INCLUDE_DIR}")
+    file(MAKE_DIRECTORY "${GSL_INCLUDE_DIR}/gsl")
+
+    # Search for Header files
+    file(GLOB GSL_HEADER_PATHS "${GSL_SOURCE_DIR}/gsl*.h")
+    file(GLOB dirs "${GSL_SOURCE_DIR}/*")
+    foreach (dir ${dirs})
+        if (NOT (dir MATCHES "gsl$"))
+            file(GLOB headers "${dir}/gsl*.h")
+            set(GSL_HEADER_PATHS ${GSL_HEADER_PATHS} ${headers})
+        endif ()
+    endforeach()
+
+    # Copy Header files to include Dir
+    foreach (path ${GSL_HEADER_PATHS})
+        get_filename_component(filename ${path} NAME)
+        file(COPY "${path}" DESTINATION "${GSL_INCLUDE_DIR}/gsl")
+    endforeach ()
+
+    # also copy config file to include folder??
+#    file(COPY "${path}" DESTINATION "${GSL_INCLUDE_DIR}/gsl")
+
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY CACHE)
+endif()
+
+#
 # PaGMO
 #
 # Add the PaGMO project and build
@@ -107,15 +146,22 @@ if(USE_PAGMO)
 endif()
 
 #
-# Tudat and applications
+# Tudat
 #
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
+
+#
+# Applications
+#
+add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
+
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
+
 if(USE_CSPICE AND USE_JSONCPP)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
 endif()
+
 if(USE_GSL)
     add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/GSL/")
 endif()
-add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
