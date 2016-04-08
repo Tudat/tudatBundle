@@ -62,6 +62,6 @@ Detailed control and to specification of detailed build options for external lib
 
 ## Documentation
 
-* [Tudat wiki](http://tudat.tudelft.nl/projcets/tudat/wiki)
+* [Tudat wiki](http://tudat.tudelft.nl/projects/tudat/wiki)
 
 * [Doxygen](http://tudat.tudelft.nl/Doxygen/Tudat/docs/index.html)
