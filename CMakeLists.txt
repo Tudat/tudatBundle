@@ -66,7 +66,7 @@ endif()
 # JSONCPP
 #
 # Add the JSONCPP project and build
-if(USE_JSPONCPP)
+if(USE_JSONCPP)
   option(JSONCPP_WITH_TESTS "Build JSONCPP tests." OFF)
   option(JSONCPP_WITH_PKGCONFIG_SUPPORT "Bulid JSONCPP PKGCONFIG files." OFF)
   set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/jsoncpp/lib CACHE PATH "Path for building JSONCPP library in.")
