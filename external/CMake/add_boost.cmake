@@ -71,34 +71,12 @@ string(REGEX REPLACE "beta\\.([0-9])$" "beta\\1" BoostFolderName ${BoostVersion}
 string(REPLACE "." "_" BoostFolderName ${BoostFolderName})
 set(BoostFolderName boost_${BoostFolderName})
 
-# If user wants to use a cache copy of Boost, get the path to this location.
-if(USE_BOOST_CACHE)
-  if(BOOST_CACHE_DIR)
-    file(TO_CMAKE_PATH "${BOOST_CACHE_DIR}" BoostCacheDir)
-  elseif(WIN32)
-    ms_get_temp_dir()
-    set(BoostCacheDir "${TempDir}")
-  elseif(APPLE)
-    set(BoostCacheDir "$ENV{HOME}/Library/Caches")
-  else()
-    set(BoostCacheDir "$ENV{HOME}/.cache")
-  endif()
-endif()
-
-# If the cache directory doesn't exist, fall back to use the build root.
-if(NOT IS_DIRECTORY "${BoostCacheDir}")
-  if(BOOST_CACHE_DIR)
-    set(Message "\nThe directory \"${BOOST_CACHE_DIR}\" provided in BOOST_CACHE_DIR doesn't exist.")
-    set(Message "${Message}  Falling back to default path at \"${CMAKE_BINARY_DIR}/MaidSafe\"\n")
-    message(WARNING "${Message}")
-  endif()
-  set(BoostCacheDir ${CMAKE_BINARY_DIR})
-else()
-  if(NOT USE_BOOST_CACHE AND NOT BOOST_CACHE_DIR)
-    set(BoostCacheDir "${BoostCacheDir}/MaidSafe")
-  endif()
-  file(MAKE_DIRECTORY "${BoostCacheDir}")
-endif()
+# Create directory in top-level source dir.
+SET(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+SET(BOOST_LIBRARYDIR "${BOOST_INCLUDEDIR}/stage/lib")
+SET(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
+file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
+file(MAKE_DIRECTORY "${BoostCacheDir}")
 
 # Set up the full path to the source directory
 set(BoostSourceDir "${BoostFolderName}_${CMAKE_CXX_COMPILER_ID}_${CMAKE_CXX_COMPILER_VERSION}")
@@ -367,9 +345,6 @@ file(WRITE "${BoostSourceDir}/build_b2.log"
 # Copy libraries and source
 #
 # Set FindBoost.cmake helpers and copy source and libraries
-SET(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
-SET(BOOST_LIBRARYDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost/stage/lib")
-file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
 file(COPY "${BoostSourceDir}/stage" DESTINATION "${BOOST_INCLUDEDIR}")
 file(COPY "${BoostSourceDir}/boost" DESTINATION "${BOOST_INCLUDEDIR}")
 
