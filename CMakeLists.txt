@@ -25,6 +25,10 @@ set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
 
 enable_testing( )
 
+# Set the flag to force to use include_directories macro on Apple too
+option(APPLE_INCLUDE_FORCE "Force include_directories on Apple too." OFF)
+
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake/")
 
 message(STATUS "CMake modules: ${CMAKE_MODULE_PATH}")
