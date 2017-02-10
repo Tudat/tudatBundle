@@ -16,7 +16,7 @@ project( TudatBundle )
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
-option(USE_NRLMSISE "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
+option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." OFF)
 option(USE_PAGMO    "Build PaGMO library." OFF)
 option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
 
@@ -80,7 +80,7 @@ endif()
 # NRLMSISE
 #
 # Add the NRLMSISE project and build
-if(USE_NRLMSISE)
+if(USE_NRLMSISE00)
   set(NRLMSISE00_WITH_TESTS OFF CACHE BOOL "Building of NRLMSISE00 tests.")
   add_subdirectory( "${PROJECTROOT}/nrlmsise-00/")
 endif()
