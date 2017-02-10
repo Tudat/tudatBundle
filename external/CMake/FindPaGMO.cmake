@@ -1,42 +1,17 @@
- #    Copyright (c) 2010-2015, Delft University of Technology
- #    All rights reserved.
+ #    Copyright (c) 2010-2017, Delft University of Technology
+ #    All rigths reserved
  #
- #    Redistribution and use in source and binary forms, with or without modification, are
- #    permitted provided that the following conditions are met:
- #      - Redistributions of source code must retain the above copyright notice, this list of
- #        conditions and the following disclaimer.
- #      - Redistributions in binary form must reproduce the above copyright notice, this list of
- #        conditions and the following disclaimer in the documentation and/or other materials
- #        provided with the distribution.
- #      - Neither the name of the Delft University of Technology nor the names of its contributors
- #        may be used to endorse or promote products derived from this software without specific
- #        prior written permission.
- #
- #    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
- #    OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- #    MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- #    COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- #    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- #    GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
- #    AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- #    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- #    OF THE POSSIBILITY OF SUCH DAMAGE.
- #
- #    Changelog
- #      YYMMDD    Author            Comment
- #      13xxxx    K. Kumar          Original file
- #      140610    J. Geul           Implemented version finder for main.cpp
+ #    This file is part of the Tudat. Redistribution and use in source and
+ #    binary forms, with or without modification, are permitted exclusively
+ #    under the terms of the Modified BSD license. You should have received
+ #    a copy of the license with this file. If not, please or visit:
+ #    http://tudat.tudelft.nl/LICENSE.
  #
  #    References
- #      FindEigen3.cmake.
+ #      FindEigen3.cmake (2-clause BSD license)
  #
  #    Notes
- #
- #	This script tries to find the PaGMO library. This module supports requiring a minimum 
- #    	version, e.g. you can do version, e.g. you can do find_package(PaGMO 1.1.2) to require
- #    	version 1.1.2 or newer of PaGMO.
- #
- #	Sets the following variables:
+ #	    Sets the following variables:
  #          PAGMO_INCLUDE_DIR    - Source directory to include
  #          PAGMO_LIBRARYDIR     - Path to build static library
  #          PAGMO_VERSION_OK     - True of PaGMO found.
@@ -45,16 +20,6 @@
  #   	    PAGMO_VERSION_MAJOR  - PaGMO major version found e.g. 1
  #   	    PAGMO_VERSION_MINOR  - PaGMO minor version found e.g. 1
  #   	    PAGMO_VERSION_PATCH  - PaGMO patch version found e.g. 5
- #
- #      Original file copied from FindEigen3.cmake
- #          Original copyright statements	
- #              Copyright (c) 2006, 2007 Montel Laurent, <montel@kde.org>
- #              Copyright (c) 2008, 2009 Gael Guennebaud, <g.gael@free.fr>
- #              Copyright (c) 2009 Benoit Jacob <jacob.benoit.1@gmail.com>
- #
- #          FindEigen3.cmake states that redistribution and use is allowed according to the 
- #          terms of the 2-clause BSD license.
- #
 
 macro(_pagmo_check_version)
   message(STATUS "Checking for PaGMO in: " ${PAGMO_BASE_PATH})      
@@ -83,8 +48,8 @@ macro(_pagmo_check_version)
 
   set(PAGMO_LIBRARY "pagmo")
   set(PAGMO_INCLUDE_DIR ${PAGMO_BASE_PATH}/../)
-  set(PAGMO_LIBRARY_DIR ${PAGMO_BASE_PATH}/lib/)
-  link_directories(${PAGMO_LIBRARY_DIR})
+  set(PAGMO_LIBRARYDIR ${PAGMO_BASE_PATH}/build/src/)
+  link_directories(${PAGMO_LIBRARYDIR})
 endmacro(_pagmo_check_version)
 
 if(PAGMO_BASE_PATH)

@@ -22,13 +22,14 @@ option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
 
 # Set root-directory for code to current source directory.
 set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
-
+message(STATUS ${PROJECT_SOURCE_DIR})
 enable_testing( )
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake/")
+# Set the flag to force to use include_directories macro on Apple too
+option(APPLE_INCLUDE_FORCE "Force include_directories on Apple too." ON)
 
-message(STATUS "CMake modules: ${CMAKE_MODULE_PATH}")
-message(STATUS ${PROJECT_SOURCE_DIR})
+# Let CMake find our custom cmake modules/scritpts
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake")
 
 #
 # Boost
