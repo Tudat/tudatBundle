@@ -22,3 +22,6 @@
 [submodule "pagmo"]
 	path = pagmo
 	url = https://github.com/esa/pagmo
+[submodule "sofa"]
+	path = sofa
+	url = https://github.com/DominicDirkx/sofa.git

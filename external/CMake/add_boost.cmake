@@ -1,4 +1,4 @@
-#    Copyright (c) 2010-2016, Delft University of Technology
+#    Copyright (c) 2010-2017, Delft University of Technology
 #    All rigths reserved
 #
 #    This file is part of the Tudat. Redistribution and use in source and
@@ -72,16 +72,20 @@ string(REPLACE "." "_" BoostFolderName ${BoostFolderName})
 set(BoostFolderName boost_${BoostFolderName})
 
 # Create directory in top-level source dir.
-SET(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
-SET(BOOST_LIBRARYDIR "${BOOST_INCLUDEDIR}/stage/lib")
-SET(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
+set(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+set(BOOST_LIBRARYDIR "${BOOST_INCLUDEDIR}/stage/lib")
+set(Boost_NO_SYSTEM_PATHS ON)
+
+set(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
 file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
 file(MAKE_DIRECTORY "${BoostCacheDir}")
 
 #
 # Check if local Boost is not already present
 #
-message(STATUS "Please ignore any boost warnings that might follow this message. This is usual at first setup.")
+# Prevent find_package from throwing an error with Boost_NO_SYSTEM_PATHS ON
+if(EXISTS "${BOOST_INCLUDEDIR}/boost/version.hpp")
 # Set variables to true, if boost is already on system these stay true!
 set(BoostComponentsFound ON)
 set(BoostComponentsDir ON)
@@ -95,15 +99,27 @@ foreach(Component ${BoostComponents})
   # message(STATUS "${ComponentUpper}: ${Boost_${ComponentUpper}_FOUND} - ${Boost_${ComponentUpper}_LIBRARY}")
   if(NOT ${Boost_${ComponentUpper}_FOUND})
     set(BoostComponentsFound OFF)
-    break()
+	message(STATUS "Boost ${Component} not found on system. We will build it then. Please ignore boost warnings.")
   endif()
 
   # Check if the library is located in the local library directory 
   string(FIND "${Boost_${ComponentUpper}_LIBRARY}" "${BOOST_INCLUDEDIR}" BoostComponentsDirYes)
   if(BoostComponentsDirYes LESS 0)
     set(BoostComponentsDir OFF)
+  endif()
+  
+  # Need to unset these too, otherwise other find_package calls willl not update them.
+  unset("${Boost_${ComponentUpper}_FOUND}" CACHE)
+  unset("${Boost_${ComponentUpper}_LIBRARY}" CACHE)
+  
+  # Exit the for loop if a single component fails
+  if(NOT ${BoostComponentsDir})
     break()
   endif()
+  if(NOT ${BoostComponentsFound})
+    break()
+  endif()
+
 endforeach()
 
 # Unset all variable from find_package(Boost), preventing future usages of this macro becoming lazy.
@@ -117,6 +133,7 @@ unset(Boost_MAJOR_VERSION CACHE)
 unset(Boost_MINOR_VERSION CACHE)
 unset(Boost_SUBMINOR_VERSION CACHE)
 unset(Boost_LIB_DIAGNOSTIC_DEFINITIONS CACHE)
+endif()
 
 # Check if all components were found and if their location is local and not on the system.
 if(${BoostComponentsFound} AND ${BoostComponentsDir})
