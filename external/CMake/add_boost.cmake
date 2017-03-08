@@ -72,11 +72,75 @@ string(REPLACE "." "_" BoostFolderName ${BoostFolderName})
 set(BoostFolderName boost_${BoostFolderName})
 
 # Create directory in top-level source dir.
-SET(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
-SET(BOOST_LIBRARYDIR "${BOOST_INCLUDEDIR}/stage/lib")
-SET(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
+set(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+set(BOOST_LIBRARYDIR "${BOOST_INCLUDEDIR}/stage/lib")
+set(Boost_NO_SYSTEM_PATHS ON)
+
+set(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
 file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
 file(MAKE_DIRECTORY "${BoostCacheDir}")
+
+#
+# Check if local Boost is not already present
+#
+# Prevent find_package from throwing an error with Boost_NO_SYSTEM_PATHS ON
+if(EXISTS "${BOOST_INCLUDEDIR}/boost/version.hpp")
+# Set variables to true, if boost is already on system these stay true!
+set(BoostComponentsFound ON)
+set(BoostComponentsDir ON)
+foreach(Component ${BoostComponents})
+  find_package(Boost ${BoostVersion} COMPONENTS ${Component} QUIET)
+
+  # Convert component name to upper case
+  string(TOUPPER "${Component}" ComponentUpper)
+
+  # Variable variable names! Second-level unwrapping. 
+  # message(STATUS "${ComponentUpper}: ${Boost_${ComponentUpper}_FOUND} - ${Boost_${ComponentUpper}_LIBRARY}")
+  if(NOT ${Boost_${ComponentUpper}_FOUND})
+    set(BoostComponentsFound OFF)
+	message(STATUS "Boost ${Component} not found on system. We will build it then. Please ignore boost warnings.")
+  endif()
+
+  # Check if the library is located in the local library directory 
+  string(FIND "${Boost_${ComponentUpper}_LIBRARY}" "${BOOST_INCLUDEDIR}" BoostComponentsDirYes)
+  if(BoostComponentsDirYes LESS 0)
+    set(BoostComponentsDir OFF)
+  endif()
+  
+  # Need to unset these too, otherwise other find_package calls willl not update them.
+  unset("${Boost_${ComponentUpper}_FOUND}" CACHE)
+  unset("${Boost_${ComponentUpper}_LIBRARY}" CACHE)
+  
+  # Exit the for loop if a single component fails
+  if(NOT ${BoostComponentsDir})
+    break()
+  endif()
+  if(NOT ${BoostComponentsFound})
+    break()
+  endif()
+
+endforeach()
+
+# Unset all variable from find_package(Boost), preventing future usages of this macro becoming lazy.
+unset(Boost_FOUND CACHE)
+unset(Boost_INCLUDE_DIRS CACHE)
+unset(Boost_LIBRARY_DIRS CACHE)
+unset(Boost_LIBRARIES CACHE)
+unset(Boost_VERSION CACHE)
+unset(Boost_LIB_VERSION CACHE)
+unset(Boost_MAJOR_VERSION CACHE)
+unset(Boost_MINOR_VERSION CACHE)
+unset(Boost_SUBMINOR_VERSION CACHE)
+unset(Boost_LIB_DIAGNOSTIC_DEFINITIONS CACHE)
+endif()
+
+# Check if all components were found and if their location is local and not on the system.
+if(${BoostComponentsFound} AND ${BoostComponentsDir})
+  message(STATUS "Boost was already build on system")
+  return()
+endif()
+
 
 # Set up the full path to the source directory
 set(BoostSourceDir "${BoostFolderName}_${CMAKE_CXX_COMPILER_ID}_${CMAKE_CXX_COMPILER_VERSION}")
@@ -133,6 +197,9 @@ if(Found LESS "0" OR NOT IS_DIRECTORY "${BoostSourceDir}")
   file(MAKE_DIRECTORY ${BoostExtractFolder})
   file(COPY ${ZipFilePath} DESTINATION ${BoostExtractFolder})
   message(STATUS "Extracting boost ${BoostVersion} to ${BoostExtractFolder}")
+  if(WIN32)
+    message(STATUS "On Windows this can take up to several (tens) of minutes.")
+  endif()
   execute_process(COMMAND ${CMAKE_COMMAND} -E tar xfz ${BoostFolderName}.tar.bz2
                   WORKING_DIRECTORY ${BoostExtractFolder}
                   RESULT_VARIABLE Result
