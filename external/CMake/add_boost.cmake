@@ -81,6 +81,10 @@ set(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
 file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
 file(MAKE_DIRECTORY "${BoostCacheDir}")
 
+# Force using static libraries as the build libraries are not installed to the system
+# or the libs dir added to the path.
+set(Boost_USE_STATIC_LIBS ON)
+
 #
 # Check if local Boost is not already present
 #
