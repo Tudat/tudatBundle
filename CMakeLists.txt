@@ -15,6 +15,7 @@ project( TudatBundle )
 
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
+option(USE_JSON     "Build JSON library." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
 option(USE_SOFA     "Build Sofa library." ON)
@@ -62,6 +63,13 @@ include(add_boost)
 #
 if(USE_CSPICE)
   add_subdirectory( "${PROJECTROOT}/cspice/")
+endif()
+
+#
+# JSON
+#
+if(USE_JSON)
+  add_subdirectory( "${PROJECTROOT}/json/")
 endif()
 
 #
