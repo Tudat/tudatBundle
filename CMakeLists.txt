@@ -78,6 +78,10 @@ if(USE_PAGMO)
   unset(boost_v_list)
   unset(boost_version)
   unset(boost_release)
+  # Patch pagmo2 CMakeLists
+  file(COPY "${CMAKE_SOURCE_DIR}/external/CMake/CMakeLists.pagmo2.modified.txt" DESTINATION "${CMAKE_SOURCE_DIR}/pagmo2")
+  file(RENAME "${CMAKE_SOURCE_DIR}/pagmo2/CMakeLists.txt" "${CMAKE_SOURCE_DIR}/pagmo2/CMakeLists_original.txt")
+  file(RENAME "${CMAKE_SOURCE_DIR}/pagmo2/CMakeLists.pagmo2.modified.txt" "${CMAKE_SOURCE_DIR}/pagmo2/CMakeLists.txt")
 endif()
 
 # Build boost
