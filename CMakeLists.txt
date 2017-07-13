@@ -7,17 +7,25 @@
 #    a copy of the license with this file. If not, please or visit:
 #    http://tudat.tudelft.nl/LICENSE.
 
+
 # Specify minimum CMake version required to compile Tudat.
 cmake_minimum_required( VERSION 2.8.10 )
 
+# Clean cache
+
+if(EXISTS "${CMAKE_BINARY_DIR}/CMakeCache.txt")
+  file(REMOVE "${CMAKE_BINARY_DIR}/CMakeCache.txt")
+endif()
+
 # Specific Tudat project name.
 project( TudatBundle )
+
 
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
-option(USE_PAGMO    "Build PaGMO library." OFF)
+option(USE_PAGMO    "Build PaGMO2 library." ON)
 option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
 
 # Set root-directory for code to current source directory.
@@ -53,6 +61,25 @@ set(BoostVersion 1.53.0)
 set(BoostSHA1 e6dd1b62ceed0a51add3dda6f3fc3ce0f636a7f3)
 # set(BoostVersion 1.48.0)
 # set(BoostSHA1 27aced5086e96c6f7b2b684bda2bd515e115da35)
+
+# Minimum boost version required for PagMO2 is 1.55
+if(USE_PAGMO)
+  # Explode the BoostVersion string ##.##.## into boost_version;boost_release;##
+  string(REPLACE "." ";" boost_v_list ${BoostVersion})
+  list(GET boost_v_list 0 boost_version)
+  list(GET boost_v_list 1 boost_release)
+  math(EXPR boost_v_number "${boost_version} * 100000 + ${boost_release} * 100")
+  # If calculated version < 105500 change to BoostVersion to 1.57.0
+  if( boost_v_number LESS 105500 )
+    set(BoostVersion 1.57.0)
+    set(BoostSHA1 e151557ae47afd1b43dc3fac46f8b04a8fe51c12)
+    message(STATUS "Setting boost version to ${BoostVersion}")
+  endif()
+  unset(boost_v_list)
+  unset(boost_version)
+  unset(boost_release)
+endif()
+
 # Build boost
 include(add_boost)
 
@@ -86,23 +113,15 @@ if(USE_NRLMSISE00)
 endif()
 
 #
-# PaGMO
+# PaGMO2
 #
-# Add the PaGMO project and build
+# Add the PaGMO2 project and build
 if(USE_PAGMO)
-  OPTION(BUILD_PYGMO    "Build PaGMO with Python bindings." ${USE_PYGMO})
-  OPTION(ENABLE_TESTS   "Build PaGMO with test set."        OFF)
-  OPTION(BUILD_EXAMPLES "Build PaGMO with examples."        OFF)
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pagmo/lib"
-    CACHE PATH "Path for building static PaGMO library in.")
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pagmo/lib"
-    CACHE PATH "Path for building dynamic PaGMO library in.")
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pagmo/bin"
-    CACHE PATH "Path for building PaGMO binaries in.")
-  add_subdirectory( "${PROJECTROOT}/pagmo/")
-  unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY CACHE)
-  unset(CMAKE_LIBRARY_OUTPUT_DIRECTORY CACHE)
-  unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY CACHE)
+  OPTION(BUILD_PYGMO    "Build PaGMO2 with Python bindings." ${USE_PYGMO})
+  OPTION(PAGMO_BUILD_TESTS   "Build PaGMO2 with test set." OFF)
+  OPTION(PAGMO_BUILD_EXAMPLES "Build PaGMO2 with examples." OFF)
+  unset(pagmo_LIB_DEPENDS CACHE)
+  add_subdirectory( "${PROJECTROOT}pagmo2/" )
 endif()
 
 #
@@ -115,6 +134,8 @@ if(USE_CSPICE AND USE_JSONCPP)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
 endif()
 if(USE_PAGMO)
-  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx/")
+  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/Pagmo2")
+  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx")
 endif()
+
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
