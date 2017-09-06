@@ -1,11 +1,9 @@
 [submodule "tudat"]
 	path = tudat
 	url = https://github.com/aleixpinardell/tudat.git
-	branch = json
 [submodule "tudatExampleApplications"]
 	path = tudatExampleApplications
 	url = https://github.com/aleixpinardell/tudatExampleApplications.git
-	branch = json
 [submodule "eigen"]
 	path = eigen
 	url = https://github.com/RLovelett/eigen.git
