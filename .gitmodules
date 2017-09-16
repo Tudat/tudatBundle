@@ -22,3 +22,10 @@
 [submodule "pagmo2"]
 	path = pagmo2
 	url = https://github.com/esa/pagmo2.git
+[submodule "nlopt"]
+	path = nlopt
+	url = https://github.com/stevengj/nlopt.git
+[submodule "CoinIpopt"]
+	path = CoinIpopt
+	url = https://github.com/coin-or/Ipopt.git
+	branch = stable/3.12

@@ -25,8 +25,11 @@ project( TudatBundle )
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
-option(USE_PAGMO    "Build PaGMO2 library." ON)
-option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
+option(USE_OPTIMIZATION_PACKAGE    "Build PaGMO2 library and tudat::optimization package dependent on it." ON)
+option(USE_PAGMO "Build PaGMO2 library. Forcet to ON if optimization package is enabled" OFF)
+option(USE_PYGMO "Build PaGMO library with Python bindings." OFF)
+option(USE_PAGMO_WITH_NLOPT "Build nlopt library for PaGMO" OFF)
+option(USE_PAGMO_WITH_IPOPT "Build ipopt library for PaGMO" OFF)
 
 # Set root-directory for code to current source directory.
 set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
@@ -46,7 +49,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake")
 set(BoostComponents filesystem system thread regex date_time unit_test_framework)
 # Add additional required boost componets for other libraries
 # if these are used.
-if(USE_PAGMO)
+if(USE_PAGMO OR USE_OPTIMIZATION_PACKAGE)
   list(APPEND BoostComponents serialization chrono atomic)
 endif()
 if(USE_PYGMO)
@@ -63,7 +66,7 @@ set(BoostSHA1 e6dd1b62ceed0a51add3dda6f3fc3ce0f636a7f3)
 # set(BoostSHA1 27aced5086e96c6f7b2b684bda2bd515e115da35)
 
 # Minimum boost version required for PagMO2 is 1.55
-if(USE_PAGMO)
+if(USE_OPIMIZATION_PACKAGE OR USE_PAGMO)
   # Explode the BoostVersion string ##.##.## into boost_version;boost_release;##
   string(REPLACE "." ";" boost_v_list ${BoostVersion})
   list(GET boost_v_list 0 boost_version)
@@ -120,13 +123,36 @@ endif()
 # PaGMO2
 #
 # Add the PaGMO2 project and build
-if(USE_PAGMO)
-  OPTION(BUILD_PYGMO    "Build PaGMO2 with Python bindings." ${USE_PYGMO})
+if(USE_OPTIMIZATION_PACKAGE OR USE_PAGMO_WITH_NLOPT)
+    OPTION(PAGMO_WITH_NLOPT ON)
+endif()
+
+if(USE_OPTIMIZATION_PACKAGE OR USE_PAGMO_WITH_IPOPT)
+    OPTION(PAGMO_WITH_IPOPT ON)
+endif()
+
+if(USE_OPTIMIZATION_PACKAGE OR USE_PAGMO)
   OPTION(PAGMO_BUILD_TESTS   "Build PaGMO2 with test set." OFF)
-  OPTION(PAGMO_BUILD_EXAMPLES "Build PaGMO2 with examples." OFF)
+  OPTION(PAGMO_BUILD_EXAMPLES "Build PaGMO2 with examples." ON)
+  if(USE_PYGMO)
+    option(PAGMO_BUILD_PAGMO OFF)
+    option(PAGMO_BUILD_PYGMO ON)
+  else(USE_PYGMO)
+    option(PAGMO_BUILD_PAGMO ON)
+    option(PAGMO_BUILD_PYGMO OFF)
+  endif(USE_PYGMO)
   unset(pagmo_LIB_DEPENDS CACHE)
   add_subdirectory( "${PROJECTROOT}pagmo2/" )
+
+elseif(USE_PYGMO)
+    option(PAGMO_BUILD_PAGMO OFF)
+    option(PAGMO_BUILD_PYGMO ON)
+    unset(pagmo_LIB_DEPENDS CACHE)
+    add_subdirectory( "${PROJECTROOT}pagmo2/" )
+
 endif()
+
+
 
 #
 # Tudat and applications
@@ -137,9 +163,9 @@ add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorEx
 if(USE_CSPICE AND USE_JSONCPP)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
 endif()
-if(USE_PAGMO)
+if(USE_OPTIMIZATION_PACKAGE OR USE_PAGMO)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/Pagmo2")
-  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx")
+  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/Pagmo2Example")
 endif()
 
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
