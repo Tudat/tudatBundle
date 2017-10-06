@@ -1,4 +1,4 @@
-#    Copyright (c) 2010-2016, Delft University of Technology
+#    Copyright (c) 2010-2017, Delft University of Technology
 #    All rigths reserved
 #
 #    This file is part of the Tudat. Redistribution and use in source and
@@ -17,6 +17,7 @@ project( TudatBundle )
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
+option(USE_SOFA     "Build Sofa library." OFF)
 option(USE_PAGMO    "Build PaGMO library." OFF)
 option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
 
@@ -83,6 +84,13 @@ endif()
 if(USE_NRLMSISE00)
   set(NRLMSISE00_WITH_TESTS OFF CACHE BOOL "Building of NRLMSISE00 tests.")
   add_subdirectory( "${PROJECTROOT}/nrlmsise-00/")
+endif()
+
+#
+# SOFA
+#
+if(USE_SOFA)
+  add_subdirectory( "${PROJECTROOT}/sofa/src")
 endif()
 
 #
