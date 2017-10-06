@@ -112,9 +112,14 @@ foreach(Component ${BoostComponents})
     set(BoostComponentsDir OFF)
   endif()
   
-  # Need to unset these too, otherwise other find_package calls willl not update them.
-  unset("${Boost_${ComponentUpper}_FOUND}" CACHE)
-  unset("${Boost_${ComponentUpper}_LIBRARY}" CACHE)
+  # Need to unset these too, otherwise other find_package calls willl not update them. Also some are put in current scope and cache
+  unset("Boost_${ComponentUpper}_FOUND")
+  unset("Boost_${ComponentUpper}_LIBRARY")
+  unset("Boost_${ComponentUpper}_FOUND" CACHE)
+  unset("Boost_${ComponentUpper}_LIBRARY" CACHE)
+  unset("Boost_${ComponentUpper}_LIBRARIES")
+  unset("Boost_${ComponentUpper}_LIBRARY_DEBUG" CACHE)
+  unset("Boost_${ComponentUpper}_LIBRARY_RELEASE" CACHE)
   
   # Exit the for loop if a single component fails
   if(NOT ${BoostComponentsDir})
@@ -127,17 +132,19 @@ foreach(Component ${BoostComponents})
 endforeach()
 
 # Unset all variable from find_package(Boost), preventing future usages of this macro becoming lazy.
-unset(Boost_FOUND CACHE)
-unset(Boost_INCLUDE_DIRS CACHE)
+# As before some variables are also cached, so need double cleaning
+unset(Boost_FOUND)
+unset(Boost_INCLUDE_DIRS)
+unset(Boost_LIBRARY_DIRS)
 unset(Boost_LIBRARY_DIRS CACHE)
-unset(Boost_LIBRARIES CACHE)
+unset(Boost_LIBRARIES)
+unset(Boost_VERSION)
 unset(Boost_VERSION CACHE)
+unset(Boost_LIB_VERSION)
 unset(Boost_LIB_VERSION CACHE)
-unset(Boost_MAJOR_VERSION CACHE)
-unset(Boost_MINOR_VERSION CACHE)
-unset(Boost_SUBMINOR_VERSION CACHE)
-unset(Boost_LIB_DIAGNOSTIC_DEFINITIONS CACHE)
-endif()
+unset(Boost_MAJOR_VERSION)
+unset(Boost_MINOR_VERSION)
+unset(Boost_SUBMINOR_VERSION)
 
 # Check if all components were found and if their location is local and not on the system.
 if(${BoostComponentsFound} AND ${BoostComponentsDir})
