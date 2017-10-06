@@ -146,6 +146,8 @@ unset(Boost_MAJOR_VERSION)
 unset(Boost_MINOR_VERSION)
 unset(Boost_SUBMINOR_VERSION)
 
+endif()
+
 # Check if all components were found and if their location is local and not on the system.
 if(${BoostComponentsFound} AND ${BoostComponentsDir})
   message(STATUS "Boost was already build on system")
