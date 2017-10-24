@@ -138,12 +138,12 @@ if(USE_OPTIMIZATION_PACKAGE OR USE_PAGMO)
   unset(pagmo_LIB_DEPENDS CACHE)
   add_subdirectory( "${PROJECTROOT}pagmo2/" )
 
+
 elseif(USE_PYGMO)
     option(PAGMO_BUILD_PAGMO "Do not build PaGMO2" OFF)
     option(PAGMO_BUILD_PYGMO "Do not build PaGMO2 with Python bindings" ON)
     unset(pagmo_LIB_DEPENDS CACHE)
     add_subdirectory( "${PROJECTROOT}pagmo2/" )
-
 endif()
 
 #
