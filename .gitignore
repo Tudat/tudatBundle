@@ -67,3 +67,4 @@ boost/
 *.autosave
 *.~?~
 *.save
+.DS_Store

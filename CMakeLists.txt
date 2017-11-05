@@ -15,9 +15,10 @@ project( TudatBundle )
 
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
+option(USE_JSON     "Build JSON library." ON)
 option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
-option(USE_SOFA     "Build Sofa library." OFF)
+option(USE_SOFA     "Build Sofa library." ON)
 option(USE_PAGMO    "Build PaGMO library." OFF)
 option(USE_PYGMO    "Build PaGMO library with Python bindings." OFF)
 
@@ -46,12 +47,14 @@ if(USE_PYGMO)
   list(APPEND BoostComponents python python3)
 endif()
 # Pick a boost version
-# set(BoostVersion 1.60.0)
-# set(BoostSHA1 7f56ab507d3258610391b47fef6b11635861175a)
+set(BoostVersion 1.64.0)
+set(BoostSHA1 51421ef259a4530edea0fbfc448460fcc5c64edb)
+#set(BoostVersion 1.60.0)
+#set(BoostSHA1 7f56ab507d3258610391b47fef6b11635861175a)
 # set(BoostVersion 1.57.0)
 # set(BoostSHA1 e151557ae47afd1b43dc3fac46f8b04a8fe51c12)
-set(BoostVersion 1.53.0)
-set(BoostSHA1 e6dd1b62ceed0a51add3dda6f3fc3ce0f636a7f3)
+# set(BoostVersion 1.53.0)
+# set(BoostSHA1 e6dd1b62ceed0a51add3dda6f3fc3ce0f636a7f3)
 # set(BoostVersion 1.48.0)
 # set(BoostSHA1 27aced5086e96c6f7b2b684bda2bd515e115da35)
 # Build boost
@@ -62,6 +65,13 @@ include(add_boost)
 #
 if(USE_CSPICE)
   add_subdirectory( "${PROJECTROOT}/cspice/")
+endif()
+
+#
+# JSON
+#
+if(USE_JSON)
+  add_subdirectory( "${PROJECTROOT}/json/")
 endif()
 
 #

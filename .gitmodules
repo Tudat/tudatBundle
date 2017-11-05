@@ -21,7 +21,13 @@
 	url = https://github.com/boostorg/boost.git
 [submodule "pagmo"]
 	path = pagmo
-	url = https://github.com/esa/pagmo
+	url = https://github.com/esa/pagmo.git
 [submodule "sofa"]
 	path = sofa
 	url = https://github.com/DominicDirkx/sofa.git
+[submodule "json"]
+	path = json
+	url = https://github.com/aleixpinardell/json.git
+[submodule "matlabInterface"]
+	path = matlabInterface
+	url = https://github.com/aleixpinardell/tudat-matlab.git
