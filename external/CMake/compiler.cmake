@@ -98,6 +98,11 @@ elseif( TUDAT_BUILD_GNU )
       add_definitions(-DEIGEN_DONT_ALIGN=1)
     endif()
 
+    # Fix exceptions not being caught
+    if( MINGW AND (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5.0 AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.4))
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+    endif()
+
     if( MINGW )
       # MinGW gives some c11plus.xe out of memory messages:
       # http://sourceforge.net/p/mingw-w64/mailman/message/33182613/
