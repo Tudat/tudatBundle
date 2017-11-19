@@ -56,13 +56,13 @@ endif()
 if( TUDAT_BUILD_CLANG )
     message(STATUS "Using clang compiler.")
     set ( CMAKE_C_FLAGS                "-Wall -std=c11" )
-    set ( CMAKE_C_FLAGS_DEBUG          "-g" )
+    set ( CMAKE_C_FLAGS_DEBUG          "-Og" )
     set ( CMAKE_C_FLAGS_MINSIZEREL     "-Os -DNDEBUG" )
     set ( CMAKE_C_FLAGS_RELEASE        "-O3 -DNDEBUG" )
     set ( CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g" )
 
     set ( CMAKE_CXX_FLAGS                "-Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -std=c++11" )
-    set ( CMAKE_CXX_FLAGS_DEBUG          "-g" )
+    set ( CMAKE_CXX_FLAGS_DEBUG          "-Og" )
     set ( CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG" )
     set ( CMAKE_CXX_FLAGS_RELEASE        "-O3 -DNDEBUG" )
     set ( CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g" )
@@ -82,7 +82,7 @@ elseif( TUDAT_BUILD_GNU )
 
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
     set(CMAKE_CXX_FLAGS_RELEASE        "-O2 -DNDEBUG")
-    set(CMAKE_CXX_FLAGS_DEBUG          "-g")
+    set(CMAKE_CXX_FLAGS_DEBUG          "-Og")
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra -Wno-unused-parameter -Wno-unused-variable -Woverloaded-virtual -Wold-style-cast -Wnon-virtual-dtor")
 
@@ -96,6 +96,11 @@ elseif( TUDAT_BUILD_GNU )
       #
       add_definitions(-DEIGEN_MALLOC_ALREADY_ALIGNED=1)
       add_definitions(-DEIGEN_DONT_ALIGN=1)
+    endif()
+
+    # Fix exceptions not being caught
+    if( MINGW AND (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5.0 AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.4))
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
     endif()
 
     if( MINGW )

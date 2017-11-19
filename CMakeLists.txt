@@ -64,7 +64,10 @@ include(add_boost)
 # SPICE
 #
 if(USE_CSPICE)
-  add_subdirectory( "${PROJECTROOT}/cspice/")
+  add_subdirectory( "${PROJECTROOT}/cspice/")  
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-implicit-int")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-incompatible-pointer-types")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-pointer-to-int-cast")
 endif()
 
 #
@@ -118,6 +121,10 @@ if(USE_PAGMO)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pagmo/bin"
     CACHE PATH "Path for building PaGMO binaries in.")
   add_subdirectory( "${PROJECTROOT}/pagmo/")
+  set_property(TARGET pagmo_static APPEND PROPERTY COMPILE_OPTIONS "-Wno-expansion-to-defined")
+  set_property(TARGET pagmo_static APPEND PROPERTY COMPILE_OPTIONS "-Wno-int-in-bool-context")
+  set_property(TARGET pagmo_static APPEND PROPERTY COMPILE_OPTIONS "-Wno-maybe-uninitialized")
+  set_property(TARGET pagmo_static APPEND PROPERTY COMPILE_OPTIONS "-Wno-noexcept")
   unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY CACHE)
   unset(CMAKE_LIBRARY_OUTPUT_DIRECTORY CACHE)
   unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY CACHE)
