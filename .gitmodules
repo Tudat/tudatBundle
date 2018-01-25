@@ -1,9 +1,9 @@
 [submodule "tudat"]
 	path = tudat
-	url = https://github.com/lupif/tudat.git
+	url = https://github.com/tudat/tudat.git
 [submodule "tudatExampleApplications"]
 	path = tudatExampleApplications
-	url = https://github.com/lupif/tudatExampleApplications.git
+	url = https://github.com/tudat/tudatExampleApplications.git
 [submodule "eigen"]
 	path = eigen
 	url = https://github.com/RLovelett/eigen.git
@@ -31,7 +31,6 @@
 [submodule "cspice"]
 	path = cspice
 	url = https://github.com/magnific0/cspice.git
-
 [submodule "pagmo2"]
 	path = pagmo2
 	url = https://github.com/DominicDirkx/pagmo2
