@@ -31,3 +31,6 @@
 [submodule "matlabInterface"]
 	path = matlabInterface
 	url = https://github.com/aleixpinardell/tudat-matlab.git
+[submodule "pagmo2"]
+	path = pagmo2
+	url = https://github.com/DominicDirkx/pagmo2
