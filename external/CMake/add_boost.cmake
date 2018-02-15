@@ -86,6 +86,22 @@ file(MAKE_DIRECTORY "${BoostCacheDir}")
 set(Boost_USE_STATIC_LIBS ON)
 
 #
+# Check if C POSIX library is present
+#
+include(CheckIncludeFiles)
+# usage: CHECK_INCLUDE_FILES (<header> <RESULT_VARIABLE> )
+unset(HAVE_UNISTD_H CACHE)
+check_include_files(unistd.h HAVE_UNISTD_H)
+if(NOT HAVE_UNISTD_H)
+    if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        execute_process(COMMAND xcode-select;-p OUTPUT_VARIABLE Output ERROR_VARIABLE Error)
+        message(FATAL_ERROR "C POSIX libraries not found on system. From command line execute:\nxcode-select --install.\n${Output}\n${Error}\n")
+    else()
+        message(FATAL_ERROR "C POSIX libraries not found on system. Please (re)install development environment.")
+    endif()
+endif()
+
+#
 # Check if local Boost is not already present
 #
 # Prevent find_package from throwing an error with Boost_NO_SYSTEM_PATHS ON

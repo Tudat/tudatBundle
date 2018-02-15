@@ -7,9 +7,6 @@
 [submodule "eigen"]
 	path = eigen
 	url = https://github.com/RLovelett/eigen.git
-[submodule "cspice"]
-	path = cspice
-	url = https://github.com/magnific0/cspice.git
 [submodule "nrlmsise-00"]
 	path = nrlmsise-00
 	url = https://github.com/magnific0/nrlmsise-00.git
@@ -19,9 +16,6 @@
 [submodule "boost"]
 	path = boost
 	url = https://github.com/boostorg/boost.git
-[submodule "pagmo"]
-	path = pagmo
-	url = https://github.com/esa/pagmo.git
 [submodule "sofa"]
 	path = sofa
 	url = https://github.com/DominicDirkx/sofa.git
@@ -31,6 +25,12 @@
 [submodule "matlabInterface"]
 	path = matlabInterface
 	url = https://github.com/aleixpinardell/tudat-matlab.git
+[submodule "nlopt"]
+	path = nlopt
+	url = https://github.com/stevengj/nlopt.git
+[submodule "cspice"]
+	path = cspice
+	url = https://github.com/magnific0/cspice.git
 [submodule "pagmo2"]
 	path = pagmo2
 	url = https://github.com/DominicDirkx/pagmo2
