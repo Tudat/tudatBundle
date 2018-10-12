@@ -29,6 +29,7 @@ option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support.
 option(USE_SOFA     "Build Sofa library." ON)
 option(USE_PAGMO "Build PaGMO2 library. Forced to ON if optimization package is enabled" OFF)
 option(USE_PYGMO "Build PaGMO library with Python bindings." OFF)
+option(BUILD_WITH_ESTIMATION_TOOLS "Build Tudat with state estimation functionality." ON)
 
 
 # Set root-directory for code to current source directory.
@@ -46,7 +47,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake")
 # Boost
 #
 # Set the required boost components (for Tudat)
-set(BoostComponents filesystem system thread regex date_time unit_test_framework)
+set(BoostComponents filesystem system regex date_time unit_test_framework)
 # Add additional required boost componets for other libraries
 # if these are used.
 if(USE_PAGMO)
@@ -163,6 +164,12 @@ elseif(USE_PYGMO)
     option(PAGMO_BUILD_PYGMO "Do not build PaGMO2 with Python bindings" ON)
     unset(pagmo_LIB_DEPENDS CACHE)
     add_subdirectory( "${PROJECTROOT}pagmo2/" )
+endif()
+
+if(NOT BUILD_WITH_ESTIMATION_TOOLS)
+ add_definitions(-DBUILD_WITH_ESTIMATION_TOOLS=0)
+else()
+ add_definitions(-DBUILD_WITH_ESTIMATION_TOOLS=1)
 endif()
 
 #
