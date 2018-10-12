@@ -47,7 +47,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake")
 # Boost
 #
 # Set the required boost components (for Tudat)
-set(BoostComponents filesystem system regex date_time unit_test_framework)
+set(BoostComponents filesystem system regex date_time unit_test_framework thread)
 # Add additional required boost componets for other libraries
 # if these are used.
 if(USE_PAGMO)
