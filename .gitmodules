@@ -10,27 +10,24 @@
 [submodule "nrlmsise-00"]
 	path = nrlmsise-00
 	url = https://github.com/magnific0/nrlmsise-00.git
-[submodule "jsoncpp"]
-	path = jsoncpp
-	url = https://github.com/open-source-parsers/jsoncpp.git
 [submodule "boost"]
 	path = boost
 	url = https://github.com/boostorg/boost.git
 [submodule "sofa"]
 	path = sofa
-	url = https://github.com/DominicDirkx/sofa.git
+	url = https://github.com/tudat/sofa.git
 [submodule "json"]
 	path = json
-	url = https://github.com/aleixpinardell/json.git
+	url = https://github.com/tudat/json.git
 [submodule "matlabInterface"]
 	path = matlabInterface
-	url = https://github.com/aleixpinardell/tudat-matlab.git
+	url = https://github.com/tudat/tudat-matlab.git
 [submodule "nlopt"]
 	path = nlopt
 	url = https://github.com/stevengj/nlopt.git
 [submodule "cspice"]
 	path = cspice
-	url = https://github.com/magnific0/cspice.git
+	url = https://github.com/tudat/cspice.git
 [submodule "pagmo2"]
 	path = pagmo2
-	url = https://github.com/DominicDirkx/pagmo2
+	url = https://github.com/tudat/pagmo2

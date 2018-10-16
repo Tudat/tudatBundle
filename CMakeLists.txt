@@ -23,8 +23,7 @@ project( TudatBundle )
 
 # Package options
 option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
-option(USE_JSON     "Build JSON library." ON)
-option(USE_JSONCPP  "Build JSONCPP library and example applications." OFF)
+option(USE_JSON     "Build JSON library and example applications." ON)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
 option(USE_SOFA     "Build Sofa library." ON)
 option(USE_PAGMO "Build PaGMO2 library. Forced to ON if optimization package is enabled" OFF)
@@ -41,7 +40,7 @@ enable_testing( )
 option(APPLE_INCLUDE_FORCE "Force include_directories on Apple too." ON)
 
 # Let CMake find our custom cmake modules/scritpts
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/CMake" "${CMAKE_CURRENT_SOURCE_DIR}/tudat/Tudat/External/CMake")
 
 #
 # Boost
@@ -107,19 +106,6 @@ if(USE_JSON)
 endif()
 
 #
-# JSONCPP
-#
-# Add the JSONCPP project and build
-if(USE_JSONCPP)
-  option(JSONCPP_WITH_TESTS "Build JSONCPP tests." OFF)
-  option(JSONCPP_WITH_PKGCONFIG_SUPPORT "Bulid JSONCPP PKGCONFIG files." OFF)
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/jsoncpp/lib CACHE PATH "Path for building JSONCPP library in.")
-  add_subdirectory( "${PROJECTROOT}/jsoncpp/")
-  # Unset library output dir to prevent screwing with other packages
-  unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY CACHE)
-endif()
-
-#
 # NRLMSISE
 #
 # Add the NRLMSISE project and build
@@ -178,9 +164,7 @@ endif()
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
-if(USE_CSPICE AND USE_JSONCPP)
-  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/SpiceAndJSON/")
-endif()
+
 if(USE_PAGMO)
   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx")
 endif()
