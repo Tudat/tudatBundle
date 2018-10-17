@@ -9,7 +9,7 @@
 	url = https://github.com/tudat/eigen.git
 [submodule "nrlmsise-00"]
 	path = nrlmsise-00
-	url = https://github.com/magnific0/nrlmsise-00.git
+	url = https://github.com/tudat/nrlmsise-00.git
 [submodule "boost"]
 	path = boost
 	url = https://github.com/boostorg/boost.git
