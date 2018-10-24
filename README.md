@@ -30,7 +30,7 @@ This document contains minimal information on how to build the Tudat bundle. For
 
         make
 
-Note: it can happen that due to dependencies between the submodules the ```make``` process quits with an error (after building SPICE or JSONCPP, for instance). In this case, please repeat steps 5 and 6 once or twice.
+Note: it can happen that due to dependencies between the submodules the ```make``` process quits with an error (after building SPICE, for instance). In this case, please repeat steps 5 and 6 once or twice.
 
 <a name="switching_apps">
 ### Switching on/off libraries and applications
@@ -38,7 +38,7 @@ Note: it can happen that due to dependencies between the submodules the ```make`
 
 By default only the SPICE library is build. You can enable/disable which libraries are build by manipulating special use switches:
 
-1. Each library has such a switch, these are: ```USE_CSPICE```, ```USE_JSONCPP```, ```USE_NRLMSISE``` and ```USE_PAGMO```.
+1. Each library has such a switch, these are: ```USE_CSPICE```, ```USE_NRLMSISE```, ```USE_PAGMO```.
 
 2. You can turn on or off such a switch as an argument to CMake. For instance, the following will disable SPICE, but enable the nrlmsise-00 atmopshere model:
 
