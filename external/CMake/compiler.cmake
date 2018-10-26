@@ -106,8 +106,8 @@ elseif( TUDAT_BUILD_GNU )
     if( MINGW )
       # MinGW gives some c11plus.xe out of memory messages:
       # http://sourceforge.net/p/mingw-w64/mailman/message/33182613/
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftrack-macro-expansion=0")
-      set(CMAKE_EXE_LINKER_FLAGS "-Wl,--large-address-aware")
+#      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftrack-macro-expansion=0")
+#      set(CMAKE_EXE_LINKER_FLAGS "-Wl,--large-address-aware")
     endif()
 
 elseif( TUDAT_BUILD_MSVC )
