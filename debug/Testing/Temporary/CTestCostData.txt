@@ -1,0 +1,349 @@
+sofa-test 2 0.0076255
+test_AerodynamicMomentAndAerodynamicForce 0 0
+test_AerodynamicsNamespace 2 0.00706338
+test_AerodynamicCoefficientGenerator 2 0.0350948
+test_ExponentialAtmosphere 2 0.00694283
+test_CustomConstantTemperatureAtmosphere 2 0.0069508
+test_TabulatedAtmosphere 2 42.2179
+test_TabulatedAerodynamicCoefficients 0 0
+test_HeatTransfer 2 0.013277
+test_ControlSurfaceIncrements 0 0
+test_AerodynamicCoefficientsFromFile 0 0
+test_WindModel 0 0
+test_NRLMSISE00Atmosphere 2 0.0278358
+test_AstrodynamicsFunctions 2 0.00654598
+test_OrbitalElementConversions 2 0.00699269
+test_PhysicalConstants 2 0.00614347
+test_UnitConversions 2 0.00616712
+test_MeanToEccentricAnomalyConversion 2 0.417773
+test_MeanToHyperbolicEccentricAnomalyConversion 2 0.634923
+test_KeplerPropagator 0 0
+test_AccelerationModel 2 0.00642826
+test_ClohessyWiltshirePropagator 2 0.00617612
+test_MissionGeometry 2 0.00704024
+test_TimeConversions 2 0.00617123
+test_CelestialBodyConstants 2 0.0062486
+test_ModifiedEquinoctialElementConversions 0 0
+test_GeodeticCoordinateConversions 2 0.00613294
+test_StateElementConversions 2 0.00617226
+test_SphericalOrbitalStateConversions 2 0.00624449
+test_BodyShapeModels 2 0.00619385
+test_UnifiedStateModelQuaternionElementConversions 2 0.00760493
+test_UnifiedStateModelModifiedRodriguesParameterElementConversions 0 0
+test_UnifiedStateModelExponentialMapElementConversions 2 0.00738543
+test_EmpiricalAccelerations 0 0
+test_CannonBallRadiationPressureAccelerationAndForce 2 0.00893762
+test_LorentzStaticMagneticAccelerationAndForce 2 0.0062486
+test_RadiationPressureInterface 2 0.00616969
+test_ApproximatePlanetPositions 2 0.00646245
+test_TabulatedEphemeris 0 0
+test_CartesianStateExtractor 2 0.00715385
+test_KeplerStateExtractor 2 0.00721734
+test_RotationalEphemeris 2 0.00603655
+test_SimpleRotationalEphemeris 2 0.00641541
+test_FrameManager 2 0.031663
+test_CompositeEphemeris 0 0
+test_TabulatedRotationalEphemeris 2 0.272368
+test_KeplerEphemeris 0 0
+test_GcrsToItrsRotation 0 0
+test_SphericalHarmonicsGravityField 2 0.00696931
+test_GravitationalForce 2 0.00647812
+test_CentralAndZonalGravityModel 2 0.0104492
+test_UnitConversionsCircularRestrictedThreeBodyProblem 2 0.00665882
+test_JacobiEnergy 2 0.00615376
+test_LibrationPoints 2 0.0062504
+test_SphericalHarmonicsGravityModel 2 0.0065249
+test_ThirdBodyPerturbation 2 0.00691816
+test_TriAxialEllipsoidGravity 2 0.00616147
+test_DirectTidalDissipationAcceleration 0 0
+test_GravityFieldVariations 0 0
+test_MutualSphericalHarmonicsGravityModel 0 0
+test_GravitationalTorques 0 0
+test_EscapeAndCapture 2 0.00652645
+test_GravityAssist 2 0.00633239
+test_LambertTargeterIzzo 2 0.00638868
+test_LambertTargeterGooding 2 0.00624988
+test_LambertTargeter 2 0.0060841
+test_LambertRoutines 2 0.00618151
+test_ZeroRevolutionLambertTargeterIzzo 2 0.0064807
+test_MultiRevolutionLambertTargeterIzzo 2 0.00666396
+test_MathematicalShapeFunctions 2 0.00695877
+test_ReferenceFrameTransformations 2 0.0156034
+test_ApparentAccelerationModel 2 0.00635706
+test_AerodynamicAngleCalculator 0 0
+test_LightTime 2 0.0318478
+test_AngularPositionModel 0 0
+test_OneWayRangeModel 0 0
+test_OneWayDifferencedRangeModel 0 0
+test_DopplerModels 0 0
+test_PositionObservationModel 0 0
+test_EulerAngleObservationModel 0 0
+test_ObservationNoiseSimulation 0 0
+test_NWayRangeObservationModel 0 0
+test_ObservationViabilityCalculators 0 0
+test_EstimationFromPositionDoubleDouble 0 0
+test_EstimationInput 0 0
+test_TidalPropertyEstimation 0 0
+test_MultiArcStateEstimation 0 0
+test_HybridArcStateEstimation 0 0
+test_ParameterInfluenceDetermination 0 0
+test_BiasEstimation 0 0
+test_RotationalStateEstimation 0 0
+test_EstimationFromPositionDoubleLongDouble 0 0
+test_EstimationFromPositionTimeDouble 0 0
+test_EstimationFromPositionTimeLongDouble 0 0
+test_AccelerationPartials 0 0
+test_SphericalHarmonicPartials 0 0
+test_MutualSphericalHarmonicPartials 0 0
+test_TorquePartials 0 0
+test_OneWayRangePartials 0 0
+test_NWayRangePartials 0 0
+test_OneWayDifferencedRangePartials 0 0
+test_OneWayDopplerPartials 0 0
+test_TwoWayDopplerPartials 0 0
+test_AngularPositionPartials 0 0
+test_PositionPartials 0 0
+test_EulerAngleObservationPartials 0 0
+test_RotationMatrixPartials 2 0.0349262
+test_LightTimeCorrectionPartials 0 0
+test_CentralBodyData 2 0.00690762
+test_CowellStateDerivative 0 0
+test_EnckeStateDerivative 0 0
+test_GaussStateDerivative 0 0
+test_UnifiedStateModelStateDerivative 0 0
+test_SequentialVariationEquationIntegration 0 0
+test_VariationalEquations 0 0
+test_MultiArcVariationalEquations 0 0
+test_HybridArcVariationalEquations 0 0
+test_DependentVariableOutput 0 0
+test_EnvironmentModelComputations 0 0
+test_BodyMassPropagation 0 0
+test_MultiTypeStatePropagation 0 0
+test_StoppingConditions 0 0
+test_CustomStatePropagation 0 0
+test_MultiArcDynamics 0 0
+test_HybridArcDynamics 0 0
+test_PropagationTerminationReason 0 0
+test_RotationalDynamicsPropagation 0 0
+test_CR3BPPropagation 0 0
+test_PropagationTerminationCheckOnFinalStep 0 0
+test_GlobalFrameOrigin 0 0
+test_ForwardBackwardIntegration 0 0
+test_ExactTermination 0 0
+test_StateDerivativeRestrictedThreeBodyProblem 2 0.00683976
+test_ShapiroTimeDelay 2 0.00726489
+test_RelativisticAccelerationCorrection 0 0
+test_CaptureLeg 2 0.00706132
+test_DepartureLegMga 2 0.00691764
+test_DepartureLegMga1DsmPosition 2 0.0064298
+test_DepartureLegMga1DsmVelocity 2 0.00738029
+test_SwingbyLegMga 2 0.00634293
+test_SwingbyLegMga1DsmPosition 2 0.00643083
+test_SwingbyLegMga1DsmVelocity 2 0.00736333
+test_Trajectory 0 0
+test_ThrustAcceleration 0 0
+test_GroundStationState 0 0
+test_PointingAnglesCalculator 0 0
+test_EarthOrientationCalculator 0 0
+test_EopReader 0 0
+test_PolarMotion 0 0
+test_TimeScaleConverter 0 0
+test_ShortPeriodEopCorrections 2 0.0166348
+test_TimeTypes 2 0.00640102
+test_TudatTypeTraits 2 0.00470515
+test_MapTextFileReader 2 0.00646347
+test_MatrixTextFileReader 2 0.00778126
+test_StreamFilters 2 0.00641361
+test_TwoLineElementsTextFileReader 0 0
+test_BasicInputOutput 2 0.0144015
+test_ParsedDataVectorUtilities 2 0.00672667
+test_FieldValue 2 0.0050416
+test_TextParser 2 0.00469744
+test_MissileDatcomReader 2 0.00922318
+test_MissileDatcomData 2 0.020902
+test_DictionaryInputSystem 2 0.00738055
+test_Extractor 2 0.00571424
+test_FixedWidthParser 2 0.0048352
+test_SeparatedParser 2 0.00590701
+test_LinearFieldTransform 2 0.0127591
+test_SolarActivityData 2 1.35146
+test_MultiArrayReader 2 0.011467
+test_MultiArrayWriter 2 0.0190568
+test_AerodynamicCoefficientReader 2 0.00988066
+test_MathematicalConstants 2 0.00658659
+test_LinearAlgebra 2 0.00638354
+test_CoordinateConversions 2 0.00647427
+test_NearestNeighbourSearch 2 0.00611058
+test_NumericalDerivative 2 0.00682126
+test_LegendrePolynomials 2 0.00749415
+test_SphericalHarmonics 2 0.00683
+test_RotationAboutArbitraryAxis 2 0.00646476
+test_RotationPartials 0 0
+test_LawgsSurfaceGeometry 2 0.00665033
+test_CubicSplineInterpolator 2 0.0318236
+test_HermiteCubicSplineInterpolator 2 0.0066511
+test_LinearInterpolator 2 0.0229605
+test_MultiLinearInterpolator 2 0.00893762
+test_LagrangeInterpolator 2 0.00782161
+test_LinearKalmanFilter 2 0.00702894
+test_ExtendedKalmanFilter 0 0
+test_UnscentedKalmanFilter 0 0
+test_AdamsBashforthMoultonIntegrator 2 0.00775684
+test_EulerIntegrator 2 0.0103834
+test_NumericalIntegrator 2 0.00628381
+test_RungeKutta4Integrator 2 0.0110476
+test_RungeKuttaVariableStepSizeIntegrator 2 0.00735279
+test_RungeKuttaCoefficients 2 0.00631954
+test_RungeKuttaFehlberg45Integrator 2 0.0279014
+test_RungeKuttaFehlberg56Integrator 2 0.0233481
+test_RungeKuttaFehlberg78Integrator 2 0.0122402
+test_RungeKutta87DormandPrinceIntegrator 2 0.00761136
+test_BulirschStoerVariableStepSizeIntegrator 2 0.00712712
+test_RootFinders 2 0.00727877
+test_SimpleLinearRegression 2 0.00590855
+test_BasicStatistics 2 0.00605968
+test_MultiVariateProbabilityDistributions 2 0.0154941
+test_BoostDistributions 2 0.00930826
+test_KernelDensityDistribution 2 1.4123
+test_RandomSampling 2 0.767506
+test_TrapezoidalIntegrator 2 0.0646183
+test_GaussianQuadrature 2 0.0261968
+test_SofaEarthOrientation 2 0.00695954
+test_SofaFundamentalArguments 2 0.00851558
+test_SofaTimeConversions 2 0.00645448
+test_SpiceInterface 2 0.0542994
+test_EnvironmentCreation 0 0
+test_AccelerationModelCreation 0 0
+test_JsonInterfaceAcceleration 2 0.0111368
+test_JsonInterfaceAerodynamics 2 0.0183423
+test_JsonInterfaceAtmosphere 2 0.0118058
+test_JsonInterfaceBody 2 0.0163603
+test_JsonInterfaceDeserialization 2 0.0131308
+test_JsonInterfaceEphemeris 0 0
+test_JsonInterfaceExport 2 0.0124175
+test_JsonInterfaceGravityField 2 0.0181513
+test_JsonInterfaceGravityFieldVariation 2 0.0112195
+test_JsonInterfaceGroundStation 2 0.00910418
+test_JsonInterfaceIntegrator 2 0.018508
+test_JsonInterfaceInterpolation 0 0
+test_JsonInterfaceMassRateModel 2 0.00880525
+test_JsonInterfacePropagator 2 0.022841
+test_JsonInterfaceRadiationPressure 2 0.011282
+test_JsonInterfaceReferenceFrames 2 0.00951439
+test_JsonInterfaceRotationModel 2 0.0478565
+test_JsonInterfaceShapeModel 2 0.00977502
+test_JsonInterfaceSimulationSingleSatellite 0 0
+test_JsonInterfaceSimulationSinglePerturbedSatellite 0 0
+test_JsonInterfaceSimulationInnerSolarSystem 0 0
+test_JsonInterfaceSimulationGalileoConstellation 0 0
+test_JsonInterfaceSimulationThrustAlongVelocityVector 0 0
+test_JsonInterfaceSimulationThrustAccelerationFromFile 0 0
+test_JsonInterfaceSpice 2 0.0118282
+test_JsonInterfaceState 2 0.0624117
+test_JsonInterfaceTermination 2 0.0189363
+test_JsonInterfaceThrust 2 0.0114948
+test_JsonInterfaceTorque 2 0.00940464
+test_JsonInterfaceVariable 2 0.0157951
+test_JsonInterfaceObservation 2 0.0720382
+test_JsonInterfaceParameter 0 0
+test_JsonInterfaceSimulationSingleSatelliteVariational 0 0
+---
+test_AerodynamicMomentAndAerodynamicForce
+test_TabulatedAerodynamicCoefficients
+test_ControlSurfaceIncrements
+test_AerodynamicCoefficientsFromFile
+test_WindModel
+test_KeplerPropagator
+test_ModifiedEquinoctialElementConversions
+test_UnifiedStateModelModifiedRodriguesParameterElementConversions
+test_EmpiricalAccelerations
+test_TabulatedEphemeris
+test_CompositeEphemeris
+test_KeplerEphemeris
+test_GcrsToItrsRotation
+test_DirectTidalDissipationAcceleration
+test_GravityFieldVariations
+test_MutualSphericalHarmonicsGravityModel
+test_GravitationalTorques
+test_AerodynamicAngleCalculator
+test_AngularPositionModel
+test_OneWayRangeModel
+test_OneWayDifferencedRangeModel
+test_DopplerModels
+test_PositionObservationModel
+test_EulerAngleObservationModel
+test_ObservationNoiseSimulation
+test_NWayRangeObservationModel
+test_ObservationViabilityCalculators
+test_EstimationFromPositionDoubleDouble
+test_EstimationInput
+test_TidalPropertyEstimation
+test_MultiArcStateEstimation
+test_HybridArcStateEstimation
+test_ParameterInfluenceDetermination
+test_BiasEstimation
+test_RotationalStateEstimation
+test_EstimationFromPositionDoubleLongDouble
+test_EstimationFromPositionTimeDouble
+test_EstimationFromPositionTimeLongDouble
+test_AccelerationPartials
+test_SphericalHarmonicPartials
+test_MutualSphericalHarmonicPartials
+test_TorquePartials
+test_OneWayRangePartials
+test_NWayRangePartials
+test_OneWayDifferencedRangePartials
+test_OneWayDopplerPartials
+test_TwoWayDopplerPartials
+test_AngularPositionPartials
+test_PositionPartials
+test_EulerAngleObservationPartials
+test_LightTimeCorrectionPartials
+test_CowellStateDerivative
+test_EnckeStateDerivative
+test_GaussStateDerivative
+test_UnifiedStateModelStateDerivative
+test_SequentialVariationEquationIntegration
+test_VariationalEquations
+test_MultiArcVariationalEquations
+test_HybridArcVariationalEquations
+test_DependentVariableOutput
+test_EnvironmentModelComputations
+test_BodyMassPropagation
+test_MultiTypeStatePropagation
+test_StoppingConditions
+test_CustomStatePropagation
+test_MultiArcDynamics
+test_HybridArcDynamics
+test_PropagationTerminationReason
+test_RotationalDynamicsPropagation
+test_CR3BPPropagation
+test_PropagationTerminationCheckOnFinalStep
+test_GlobalFrameOrigin
+test_ForwardBackwardIntegration
+test_ExactTermination
+test_RelativisticAccelerationCorrection
+test_Trajectory
+test_ThrustAcceleration
+test_GroundStationState
+test_PointingAnglesCalculator
+test_EarthOrientationCalculator
+test_EopReader
+test_PolarMotion
+test_TimeScaleConverter
+test_TwoLineElementsTextFileReader
+test_RotationPartials
+test_ExtendedKalmanFilter
+test_UnscentedKalmanFilter
+test_EnvironmentCreation
+test_AccelerationModelCreation
+test_JsonInterfaceEphemeris
+test_JsonInterfaceInterpolation
+test_JsonInterfaceSimulationSingleSatellite
+test_JsonInterfaceSimulationSinglePerturbedSatellite
+test_JsonInterfaceSimulationInnerSolarSystem
+test_JsonInterfaceSimulationGalileoConstellation
+test_JsonInterfaceSimulationThrustAlongVelocityVector
+test_JsonInterfaceSimulationThrustAccelerationFromFile
+test_JsonInterfaceParameter
+test_JsonInterfaceSimulationSingleSatelliteVariational

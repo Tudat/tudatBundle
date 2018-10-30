@@ -172,4 +172,4 @@ endif()
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
 
 SET(CMAKE_BUILD_TYPE Debug)
-option(BUILD_EXTENDED_PRECISION_PROPAGATION  OFF)
+SET(BUILD_EXTENDED_PRECISION_PROPAGATION  OFF)

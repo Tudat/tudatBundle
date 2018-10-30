@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TemplateApplication"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cspice\;CMake Files\nrlmsise-00\;CMake Files\tudatExampleApplications\;CMake Files\tudatExampleApplications\satellitePropagatorExamples\;CMake Files\tudatExampleApplications\satellitePropagatorExamples\SatellitePropagatorExamples\;CMake Files\tudatExampleApplications\templateApplication\;CMake Files\tudatExampleApplications\templateApplication\TemplateApplication\;CMake Files\external\;CMake Files\external\CMake\;CMake Files\tudat\;CMake Files\tudat\Tudat\;CMake Files\tudat\Tudat\External\;CMake Files\tudat\Tudat\External\CMake\;CMake Files\tudat\Tudat\External\SofaInterface\;CMake Files\tudat\Tudat\External\SpiceInterface\;CMake Files\tudat\Tudat\Astrodynamics\;CMake Files\tudat\Tudat\Astrodynamics\Aerodynamics\;CMake Files\tudat\Tudat\Astrodynamics\BasicAstrodynamics\;CMake Files\tudat\Tudat\Astrodynamics\ElectroMagnetism\;CMake Files\tudat\Tudat\Astrodynamics\Ephemerides\;CMake Files\tudat\Tudat\Astrodynamics\Gravitation\;CMake Files\tudat\Tudat\Astrodynamics\MissionSegments\;CMake Files\tudat\Tudat\Astrodynamics\ReferenceFrames\;CMake Files\tudat\Tudat\Astrodynamics\ObservationModels\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\AccelerationPartials\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\RotationalDynamicsPartials\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\EstimatableParameters\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\ObservationPartials\;CMake Files\tudat\Tudat\Astrodynamics\Propagators\;CMake Files\tudat\Tudat\Astrodynamics\Relativity\;CMake Files\tudat\Tudat\Astrodynamics\SystemModels\;CMake Files\tudat\Tudat\Astrodynamics\TrajectoryDesign\;CMake Files\tudat\Tudat\Astrodynamics\Propulsion\;CMake Files\tudat\Tudat\Astrodynamics\GroundStations\;CMake Files\tudat\Tudat\Astrodynamics\EarthOrientation\;CMake Files\tudat\Tudat\Basics\;CMake Files\tudat\Tudat\InputOutput\;CMake Files\tudat\Tudat\Mathematics\;CMake Files\tudat\Tudat\Mathematics\BasicMathematics\;CMake Files\tudat\Tudat\Mathematics\GeometricShapes\;CMake Files\tudat\Tudat\Mathematics\Interpolators\;CMake Files\tudat\Tudat\Mathematics\Filters\;CMake Files\tudat\Tudat\Mathematics\NumericalIntegrators\;CMake Files\tudat\Tudat\Mathematics\RootFinders\;CMake Files\tudat\Tudat\Mathematics\Statistics\;CMake Files\tudat\Tudat\Mathematics\NumericalQuadrature\;CMake Files\tudat\Tudat\SimulationSetup\;CMake Files\tudat\Tudat\SimulationSetup\EstimationSetup\;CMake Files\tudat\Tudat\SimulationSetup\EnvironmentSetup\;CMake Files\tudat\Tudat\SimulationSetup\PropagationSetup\;CMake Files\tudat\Tudat\JsonInterface\;CMake Files\sofa\;CMake Files\sofa\src\;CMake Files\..\;CMake Files\..\build-S-unknown-Default\;CMake Files\..\build-S-unknown-Default\json\;CMake Files\json\;CMake Files\json\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="application_HelloWorld">
+				<Option output="D:/S/tudatExampleApplications/templateApplication/bin/applications/application_HelloWorld.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBUILD_WITH_ESTIMATION_TOOLS=1"/>
+					<Add option="-DTUDAT_RELATIVE_PROJECT_PATH=&quot;/tudat/Tudat&quot;"/>
+					<Add option="-DUSE_NRLMSISE00=1"/>
+					<Add directory="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/.."/>
+					<Add directory="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/AFTER"/>
+					<Add directory="D:/S/eigen"/>
+					<Add directory="D:/S/boost"/>
+					<Add directory="D:/S/tudat/Tudat/.."/>
+					<Add directory="D:/S/cspice/include/../.."/>
+					<Add directory="D:/S/nrlmsise-00"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include-fixed"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 application_HelloWorld"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="application_HelloWorld/fast">
+				<Option output="D:/S/tudatExampleApplications/templateApplication/bin/applications/application_HelloWorld.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBUILD_WITH_ESTIMATION_TOOLS=1"/>
+					<Add option="-DTUDAT_RELATIVE_PROJECT_PATH=&quot;/tudat/Tudat&quot;"/>
+					<Add option="-DUSE_NRLMSISE00=1"/>
+					<Add directory="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/.."/>
+					<Add directory="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/AFTER"/>
+					<Add directory="D:/S/eigen"/>
+					<Add directory="D:/S/boost"/>
+					<Add directory="D:/S/tudat/Tudat/.."/>
+					<Add directory="D:/S/cspice/include/../.."/>
+					<Add directory="D:/S/nrlmsise-00"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include-fixed"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 application_HelloWorld/fast"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/tudatExampleApplications/templateApplication/TemplateApplication/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/helloWorld.cpp">
+			<Option target="application_HelloWorld"/>
+		</Unit>
+		<Unit filename="D:/S/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/S/cspice/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\cspice\"/>
+		</Unit>
+		<Unit filename="D:/S/nrlmsise-00/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\nrlmsise-00\"/>
+		</Unit>
+		<Unit filename="D:/S/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudatExampleApplications\satellitePropagatorExamples\SatellitePropagatorExamples\"/>
+		</Unit>
+		<Unit filename="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudatExampleApplications\templateApplication\TemplateApplication\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindEigen3.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindNRLMSISE00.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindSofa.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindSpice.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindTudat.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/add_boost.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/compiler.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/CMake/tudatLinkLibraries.cmake">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/SofaInterface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\SofaInterface\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/SpiceInterface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\SpiceInterface\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Aerodynamics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Aerodynamics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/BasicAstrodynamics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\BasicAstrodynamics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/ElectroMagnetism/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\ElectroMagnetism\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Ephemerides/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Ephemerides\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Gravitation/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Gravitation\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/MissionSegments/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\MissionSegments\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/ReferenceFrames/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\ReferenceFrames\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/ObservationModels/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\ObservationModels\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/AccelerationPartials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\AccelerationPartials\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/RotationalDynamicsPartials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\RotationalDynamicsPartials\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/EstimatableParameters/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\EstimatableParameters\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/ObservationPartials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\ObservationPartials\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Propagators/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Propagators\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Relativity/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Relativity\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/SystemModels/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\SystemModels\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/TrajectoryDesign/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\TrajectoryDesign\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Propulsion/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Propulsion\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/GroundStations/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\GroundStations\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/EarthOrientation/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\EarthOrientation\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Basics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Basics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/InputOutput/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\InputOutput\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/BasicMathematics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\BasicMathematics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/GeometricShapes/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\GeometricShapes\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/Interpolators/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\Interpolators\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/Filters/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\Filters\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/NumericalIntegrators/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\NumericalIntegrators\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/RootFinders/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\RootFinders\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/Statistics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\Statistics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/NumericalQuadrature/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\NumericalQuadrature\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/EstimationSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\EstimationSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/EnvironmentSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\EnvironmentSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/PropagationSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\PropagationSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/JsonInterface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\JsonInterface\"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\sofa\src\"/>
+		</Unit>
+		<Unit filename="D:/S/../build-S-unknown-Default/json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\build-S-unknown-Default\json\"/>
+		</Unit>
+		<Unit filename="D:/S/../build-S-unknown-Default/json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\build-S-unknown-Default\json\"/>
+		</Unit>
+		<Unit filename="D:/S/../build-S-unknown-Default/json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\build-S-unknown-Default\json\"/>
+		</Unit>
+		<Unit filename="D:/S/json/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\json\"/>
+		</Unit>
+		<Unit filename="D:/S/json/cmake/config.cmake.in">
+			<Option virtualFolder="CMake Files\json\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Sofa"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cspice\;CMake Files\nrlmsise-00\;CMake Files\tudatExampleApplications\;CMake Files\tudatExampleApplications\satellitePropagatorExamples\;CMake Files\tudatExampleApplications\satellitePropagatorExamples\SatellitePropagatorExamples\;CMake Files\tudatExampleApplications\templateApplication\;CMake Files\tudatExampleApplications\templateApplication\TemplateApplication\;CMake Files\external\;CMake Files\external\CMake\;CMake Files\tudat\;CMake Files\tudat\Tudat\;CMake Files\tudat\Tudat\External\;CMake Files\tudat\Tudat\External\CMake\;CMake Files\tudat\Tudat\External\SofaInterface\;CMake Files\tudat\Tudat\External\SpiceInterface\;CMake Files\tudat\Tudat\Astrodynamics\;CMake Files\tudat\Tudat\Astrodynamics\Aerodynamics\;CMake Files\tudat\Tudat\Astrodynamics\BasicAstrodynamics\;CMake Files\tudat\Tudat\Astrodynamics\ElectroMagnetism\;CMake Files\tudat\Tudat\Astrodynamics\Ephemerides\;CMake Files\tudat\Tudat\Astrodynamics\Gravitation\;CMake Files\tudat\Tudat\Astrodynamics\MissionSegments\;CMake Files\tudat\Tudat\Astrodynamics\ReferenceFrames\;CMake Files\tudat\Tudat\Astrodynamics\ObservationModels\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\AccelerationPartials\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\RotationalDynamicsPartials\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\EstimatableParameters\;CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\ObservationPartials\;CMake Files\tudat\Tudat\Astrodynamics\Propagators\;CMake Files\tudat\Tudat\Astrodynamics\Relativity\;CMake Files\tudat\Tudat\Astrodynamics\SystemModels\;CMake Files\tudat\Tudat\Astrodynamics\TrajectoryDesign\;CMake Files\tudat\Tudat\Astrodynamics\Propulsion\;CMake Files\tudat\Tudat\Astrodynamics\GroundStations\;CMake Files\tudat\Tudat\Astrodynamics\EarthOrientation\;CMake Files\tudat\Tudat\Basics\;CMake Files\tudat\Tudat\InputOutput\;CMake Files\tudat\Tudat\Mathematics\;CMake Files\tudat\Tudat\Mathematics\BasicMathematics\;CMake Files\tudat\Tudat\Mathematics\GeometricShapes\;CMake Files\tudat\Tudat\Mathematics\Interpolators\;CMake Files\tudat\Tudat\Mathematics\Filters\;CMake Files\tudat\Tudat\Mathematics\NumericalIntegrators\;CMake Files\tudat\Tudat\Mathematics\RootFinders\;CMake Files\tudat\Tudat\Mathematics\Statistics\;CMake Files\tudat\Tudat\Mathematics\NumericalQuadrature\;CMake Files\tudat\Tudat\SimulationSetup\;CMake Files\tudat\Tudat\SimulationSetup\EstimationSetup\;CMake Files\tudat\Tudat\SimulationSetup\EnvironmentSetup\;CMake Files\tudat\Tudat\SimulationSetup\PropagationSetup\;CMake Files\tudat\Tudat\JsonInterface\;CMake Files\sofa\;CMake Files\sofa\src\;CMake Files\..\;CMake Files\..\build-S-unknown-Default\;CMake Files\..\build-S-unknown-Default\json\;CMake Files\json\;CMake Files\json\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/S/debug/sofa/src"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sofa">
+				<Option output="D:/S/sofa/lib/libsofa.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/S/debug/sofa/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include-fixed"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 sofa"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sofa/fast">
+				<Option output="D:/S/sofa/lib/libsofa.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/S/debug/sofa/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include-fixed"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 sofa/fast"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sofa-test">
+				<Option output="D:/S/sofa/bin/sofa-test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/S/sofa/src/../bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include-fixed"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 sofa-test"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sofa-test/fast">
+				<Option output="D:/S/sofa/bin/sofa-test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/S/sofa/src/../bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/include-fixed"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/bin/../lib/gcc/i686-w64-mingw32/5.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Qt/Tools/mingw530_32/lib/gcc/../../i686-w64-mingw32/include/c++/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 sofa-test/fast"/>
+					<CompileFile command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Qt/Tools/mingw530_32/bin/mingw32-make.exe -f &quot;D:/S/debug/sofa/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/S/sofa/src/a2af.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/a2tf.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ab.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/af2a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/anp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/anpm.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apcg.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apcg13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apci.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apci13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apco.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apco13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apcs.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apcs13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/aper.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/aper13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apio.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/apio13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atci13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atciq.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atciqn.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atciqz.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atco13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atic13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/aticq.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/aticqn.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atio13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atioq.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atoc13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atoi13.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/atoiq.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/bi00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/bp00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/bp06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/bpn2xy.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2i00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2i00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2i06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2ibpn.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2ixy.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2ixys.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2s.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2t00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2t00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2t06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2tcio.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2teqx.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2tpe.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/c2txy.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/cal2jd.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/cp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/cpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/cr.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/d2dtf.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/d2tf.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/dat.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/dtdb.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/dtf2d.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eceq06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ecm06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ee00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ee00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ee00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ee06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eect00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eform.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eo06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eors.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/epb.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/epb2jd.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/epj.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/epj2jd.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/epv00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eqec06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/eqeq94.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/era00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fad03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fae03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/faf03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/faju03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fal03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/falp03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fama03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fame03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fane03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/faom03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fapa03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fasa03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/faur03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fave03.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fk52h.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fk5hip.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fk5hz.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fw2m.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/fw2xy.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/g2icrs.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gc2gd.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gc2gde.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gd2gc.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gd2gce.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gmst00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gmst06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gmst82.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gst00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gst00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gst06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gst06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/gst94.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/h2fk5.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/hfk5z.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/icrs2g.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ir.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/jd2cal.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/jdcalf.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ld.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ldn.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ldsun.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/lteceq.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ltecm.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/lteqec.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ltp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ltpb.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ltpecl.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ltpequ.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/num00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/num00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/num06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/numat.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/nut00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/nut00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/nut06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/nut80.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/nutm80.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/obl06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/obl80.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/p06e.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/p2pv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/p2s.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pap.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pas.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pb06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pdp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pfw06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/plan94.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pm.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pmat00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pmat06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pmat76.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pmp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pmpx.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pmsafe.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pn.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pn00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pn00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pn00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pn06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pn06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pnm00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pnm00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pnm06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pnm80.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pom00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ppp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ppsp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pr00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/prec76.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pv2p.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pv2s.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvdpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvm.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvmpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvppv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvstar.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvtob.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvu.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvup.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pvxpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/pxp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/refco.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rm2v.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rv2m.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rx.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rxp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rxpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rxr.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ry.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/rz.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s2c.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s2p.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s2pv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/s2xpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/sepp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/seps.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/sofa.h">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/sofam.h">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/sp00.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/starpm.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/starpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/sxp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/sxpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/t_sofa_c.c">
+			<Option target="sofa-test"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/taitt.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/taiut1.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/taiutc.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tcbtdb.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tcgtt.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tdbtcb.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tdbtt.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tf2a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tf2d.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tr.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/trxp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/trxpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tttai.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tttcg.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/tttdb.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ttut1.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ut1tai.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ut1tt.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/ut1utc.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/utctai.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/utcut1.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/xy06.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/xys00a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/xys00b.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/xys06a.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/zp.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/zpv.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/zr.c">
+			<Option target="sofa"/>
+		</Unit>
+		<Unit filename="D:/S/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/S/cspice/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\cspice\"/>
+		</Unit>
+		<Unit filename="D:/S/nrlmsise-00/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\nrlmsise-00\"/>
+		</Unit>
+		<Unit filename="D:/S/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudatExampleApplications\satellitePropagatorExamples\SatellitePropagatorExamples\"/>
+		</Unit>
+		<Unit filename="D:/S/tudatExampleApplications/templateApplication/TemplateApplication/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudatExampleApplications\templateApplication\TemplateApplication\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindEigen3.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindNRLMSISE00.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindSofa.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindSpice.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/FindTudat.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/add_boost.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/external/CMake/compiler.cmake">
+			<Option virtualFolder="CMake Files\external\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/CMake/tudatLinkLibraries.cmake">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\CMake\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/SofaInterface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\SofaInterface\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/External/SpiceInterface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\External\SpiceInterface\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Aerodynamics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Aerodynamics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/BasicAstrodynamics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\BasicAstrodynamics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/ElectroMagnetism/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\ElectroMagnetism\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Ephemerides/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Ephemerides\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Gravitation/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Gravitation\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/MissionSegments/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\MissionSegments\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/ReferenceFrames/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\ReferenceFrames\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/ObservationModels/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\ObservationModels\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/AccelerationPartials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\AccelerationPartials\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/RotationalDynamicsPartials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\RotationalDynamicsPartials\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/EstimatableParameters/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\EstimatableParameters\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/OrbitDetermination/ObservationPartials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\OrbitDetermination\ObservationPartials\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Propagators/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Propagators\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Relativity/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Relativity\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/SystemModels/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\SystemModels\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/TrajectoryDesign/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\TrajectoryDesign\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/Propulsion/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\Propulsion\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/GroundStations/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\GroundStations\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Astrodynamics/EarthOrientation/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Astrodynamics\EarthOrientation\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Basics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Basics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/InputOutput/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\InputOutput\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/BasicMathematics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\BasicMathematics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/GeometricShapes/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\GeometricShapes\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/Interpolators/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\Interpolators\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/Filters/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\Filters\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/NumericalIntegrators/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\NumericalIntegrators\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/RootFinders/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\RootFinders\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/Statistics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\Statistics\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/Mathematics/NumericalQuadrature/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\Mathematics\NumericalQuadrature\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/EstimationSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\EstimationSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/EnvironmentSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\EnvironmentSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/SimulationSetup/PropagationSetup/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\SimulationSetup\PropagationSetup\"/>
+		</Unit>
+		<Unit filename="D:/S/tudat/Tudat/JsonInterface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tudat\Tudat\JsonInterface\"/>
+		</Unit>
+		<Unit filename="D:/S/sofa/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\sofa\src\"/>
+		</Unit>
+		<Unit filename="D:/S/../build-S-unknown-Default/json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\build-S-unknown-Default\json\"/>
+		</Unit>
+		<Unit filename="D:/S/../build-S-unknown-Default/json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\build-S-unknown-Default\json\"/>
+		</Unit>
+		<Unit filename="D:/S/../build-S-unknown-Default/json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\build-S-unknown-Default\json\"/>
+		</Unit>
+		<Unit filename="D:/S/json/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\json\"/>
+		</Unit>
+		<Unit filename="D:/S/json/cmake/config.cmake.in">
+			<Option virtualFolder="CMake Files\json\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
