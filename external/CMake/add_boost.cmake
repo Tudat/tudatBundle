@@ -362,6 +362,7 @@ endif()
 if(CMAKE_BUILD_TYPE STREQUAL "DebugLibStdcxx")
   list(APPEND b2Args define=_GLIBCXX_DEBUG)
 endif()
+list(APPEND b2cxxflags "-fPIC")
 
 # Apply ::hypot not declared patch for MinGW32
 # http://stackoverflow.com/questions/10660524/error-building-boost-1-49-0-with-gcc-4-7-0
