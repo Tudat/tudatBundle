@@ -28,6 +28,7 @@ option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support.
 option(USE_SOFA     "Build Sofa library." ON)
 option(USE_PAGMO "Build PaGMO2 library. Forced to ON if optimization package is enabled" OFF)
 option(USE_PYGMO "Build PaGMO library with Python bindings." OFF)
+option(USE_NLOPT "Build PaGMO library with Python bindings." OFF)
 option(BUILD_WITH_ESTIMATION_TOOLS "Build Tudat with state estimation functionality." ON)
 
 
@@ -119,6 +120,10 @@ endif()
 #
 if(USE_SOFA)
   add_subdirectory( "${PROJECTROOT}/sofa/src")
+endif()
+
+if(USE_NLOPT)
+  add_subdirectory( "${PROJECTROOT}/nlopt/")
 endif()
 
 #

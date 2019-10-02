@@ -24,7 +24,7 @@
 	url = https://github.com/tudat/tudat-matlab.git
 [submodule "nlopt"]
 	path = nlopt
-	url = https://github.com/stevengj/nlopt.git
+	url = https://github.com/tudat/nlopt
 [submodule "cspice"]
 	path = cspice
 	url = https://github.com/tudat/cspice.git
