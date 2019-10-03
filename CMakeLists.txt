@@ -147,8 +147,10 @@ if(USE_PAGMO)
 
   message(STATUS "The things are: ${PAGMO_BUILD_PAGMO} ${PAGMO_BUILD_PYGMO} ${PAGMO_BUILD_TESTS} ${PAGMO_BUILD_EXAMPLES}")
   unset(pagmo_LIB_DEPENDS CACHE)
-  add_subdirectory( "${PROJECTROOT}pagmo2/" )
 
+  set(TBB_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/tbb")
+  add_subdirectory( "${PROJECTROOT}pagmo2/" )
+  add_subdirectory( "${PROJECTROOT}tbb/")
 
 elseif(USE_PYGMO)
     option(PAGMO_BUILD_PAGMO "Do not build PaGMO2" OFF)

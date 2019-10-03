@@ -31,3 +31,6 @@
 [submodule "pagmo2"]
 	path = pagmo2
 	url = https://github.com/tudat/pagmo2
+[submodule "tbb"]
+	path = tbb
+	url = https://github.com/DominicDirkx/tbb
