@@ -135,6 +135,8 @@ if(USE_PAGMO)
   option(PAGMO_BUILD_EXAMPLES "Build PaGMO2 with examples." ON)
   option(PAGMO_BUILD_TUTORIALS "Build PaGMO2 with tutorials." ON)
   option(PAGMO_WITH_EIGEN3 "Build PaGMO2 with Eigen 3." ON)
+  option(PAGMO_USE_TBB "Build with TBB." OFF)
+
   if(USE_PYGMO)
     option(PAGMO_BUILD_PAGMO "Do not build PaGMO2" OFF)
     option(PAGMO_BUILD_PYGMO "Build PaGMO2 with Python bindings" ON)
@@ -148,9 +150,12 @@ if(USE_PAGMO)
   message(STATUS "The things are: ${PAGMO_BUILD_PAGMO} ${PAGMO_BUILD_PYGMO} ${PAGMO_BUILD_TESTS} ${PAGMO_BUILD_EXAMPLES}")
   unset(pagmo_LIB_DEPENDS CACHE)
 
-  set(TBB_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/tbb")
+  if(PAGMO_USE_TBB)
+    set(TBB_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/tbb")
+    add_subdirectory( "${PROJECTROOT}tbb/")
+  endif()
+
   add_subdirectory( "${PROJECTROOT}pagmo2/" )
-  add_subdirectory( "${PROJECTROOT}tbb/")
 
 elseif(USE_PYGMO)
     option(PAGMO_BUILD_PAGMO "Do not build PaGMO2" OFF)
