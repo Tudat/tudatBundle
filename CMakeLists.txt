@@ -28,8 +28,15 @@ option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support.
 option(USE_SOFA     "Build Sofa library." ON)
 option(USE_PAGMO "Build PaGMO2 library. Forced to ON if optimization package is enabled" OFF)
 option(USE_PYGMO "Build PaGMO library with Python bindings." OFF)
+option(PAGMO_AS_STATIC_LIB "Compile pagmo as a static instead of a dynamic library." ON)
 option(USE_NLOPT "Build PaGMO library with Python bindings." OFF)
 option(BUILD_WITH_ESTIMATION_TOOLS "Build Tudat with state estimation functionality." ON)
+
+if(PAGMO_AS_STATIC_LIB)
+    add_definitions(-DPAGMO_STATIC_LIB=1)
+else()
+    add_definitions(-DPAGMO_STATIC_LIB=0)
+endif()
 
 
 # Set root-directory for code to current source directory.
