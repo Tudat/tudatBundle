@@ -31,6 +31,8 @@ option(USE_PYGMO "Build PaGMO library with Python bindings." OFF)
 option(PAGMO_AS_STATIC_LIB "Compile pagmo as a static instead of a dynamic library." ON)
 option(USE_NLOPT "Build PaGMO library with Python bindings." OFF)
 option(BUILD_WITH_ESTIMATION_TOOLS "Build Tudat with state estimation functionality." ON)
+option(BUILD_WITH_SOCIS_2019 "Build Tudat with 2019 SOCIS functionality." OFF)
+
 
 if(PAGMO_AS_STATIC_LIB)
     add_definitions(-DPAGMO_STATIC_LIB=1)
@@ -130,7 +132,10 @@ if(USE_SOFA)
 endif()
 
 if(USE_NLOPT)
-  add_subdirectory( "${PROJECTROOT}/nlopt/")
+    option(BUILD_SHARED_LIBS "Building NLOPT as static libraries" OFF)
+    option(NLOPT_TESTS "Enabling NLOPT tests" ON)
+
+    add_subdirectory( "${PROJECTROOT}/nlopt/")
 endif()
 
 #
@@ -143,6 +148,10 @@ if(USE_PAGMO)
   option(PAGMO_BUILD_TUTORIALS "Build PaGMO2 with tutorials." ON)
   option(PAGMO_WITH_EIGEN3 "Build PaGMO2 with Eigen 3." ON)
   option(PAGMO_USE_TBB "Build with TBB." OFF)
+
+  if(USE_NLOPT)
+      option(PAGMO_WITH_NLOPT "Build PaGMO2 with NLOPT." ON)
+  endif()
 
   if(USE_PYGMO)
     option(PAGMO_BUILD_PAGMO "Do not build PaGMO2" OFF)
