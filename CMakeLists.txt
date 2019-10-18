@@ -132,7 +132,12 @@ if(USE_SOFA)
 endif()
 
 if(USE_NLOPT)
-    option(BUILD_SHARED_LIBS "Building NLOPT as static libraries" OFF)
+    if(PAGMO_AS_STATIC_LIB)
+        option(BUILD_SHARED_LIBS "Building NLOPT as static libraries" OFF)
+    else()
+        option(BUILD_SHARED_LIBS "Building NLOPT as shared libraries" ON)
+    endif()
+
     option(NLOPT_TESTS "Enabling NLOPT tests" ON)
 
     add_subdirectory( "${PROJECTROOT}/nlopt/")
