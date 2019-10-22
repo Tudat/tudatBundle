@@ -20,26 +20,15 @@ endif()
 # Specific Tudat project name.
 project( TudatBundle )
 
-
 # Package options
-option(USE_CSPICE   "Build CSPICE libary, tudat with SPICE support and example applications." ON)
-option(USE_JSON     "Build JSON library and example applications." ON)
+option(USE_CSPICE "Build CSPICE libary, tudat with SPICE support and example applications." ON)
+option(USE_JSON "Build JSON library and example applications." ON)
 option(USE_NRLMSISE00 "Build NRLMISE-00 library and tudat with NRLMSISE support." ON)
-option(USE_SOFA     "Build Sofa library." ON)
+option(USE_SOFA "Build Sofa library." ON)
 option(USE_PAGMO "Build PaGMO2 library. Forced to ON if optimization package is enabled" OFF)
 option(USE_PYGMO "Build PaGMO library with Python bindings." OFF)
-option(PAGMO_AS_STATIC_LIB "Compile pagmo as a static instead of a dynamic library." ON)
 option(USE_NLOPT "Build PaGMO library with Python bindings." OFF)
-option(BUILD_WITH_ESTIMATION_TOOLS "Build Tudat with state estimation functionality." ON)
-option(BUILD_WITH_SOCIS_2019 "Build Tudat with 2019 SOCIS functionality." OFF)
-
-
-if(PAGMO_AS_STATIC_LIB)
-    add_definitions(-DPAGMO_STATIC_LIB=1)
-else()
-    add_definitions(-DPAGMO_STATIC_LIB=0)
-endif()
-
+option(USE_TUDAT_EXAMPLE_APPLICATIONS "Build Tudat with example applications." ON)
 
 # Set root-directory for code to current source directory.
 set(PROJECTROOT "${CMAKE_CURRENT_SOURCE_DIR}/")
@@ -106,6 +95,11 @@ if(USE_CSPICE)
   set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-implicit-int")
   set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-incompatible-pointer-types")
   set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-pointer-to-int-cast")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-shift-op-parentheses")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-logical-op-parentheses")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-parentheses")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-tautological-compare")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-format")
 endif()
 
 #
@@ -131,28 +125,23 @@ if(USE_SOFA)
   add_subdirectory( "${PROJECTROOT}/sofa/src")
 endif()
 
-if(USE_NLOPT)
-    if(PAGMO_AS_STATIC_LIB)
-        option(BUILD_SHARED_LIBS "Building NLOPT as static libraries" OFF)
-    else()
-        option(BUILD_SHARED_LIBS "Building NLOPT as shared libraries" ON)
-    endif()
-
-    option(NLOPT_TESTS "Enabling NLOPT tests" ON)
-
-    add_subdirectory( "${PROJECTROOT}/nlopt/")
-endif()
-
 #
 # PaGMO2
 #
-# Add the PaGMO2 project and build
 if(USE_PAGMO)
   option(PAGMO_BUILD_TESTS   "Build PaGMO2 with test set." ON)
   option(PAGMO_BUILD_EXAMPLES "Build PaGMO2 with examples." ON)
   option(PAGMO_BUILD_TUTORIALS "Build PaGMO2 with tutorials." ON)
   option(PAGMO_WITH_EIGEN3 "Build PaGMO2 with Eigen 3." ON)
   option(PAGMO_USE_TBB "Build with TBB." OFF)
+  option(PAGMO_AS_STATIC_LIB "Compile pagmo as a static instead of a dynamic library." ON)
+
+  if(PAGMO_AS_STATIC_LIB)
+      add_definitions(-DPAGMO_STATIC_LIB=1)
+  else()
+      add_definitions(-DPAGMO_STATIC_LIB=0)
+  endif()
+
 
   if(USE_NLOPT)
       option(PAGMO_WITH_NLOPT "Build PaGMO2 with NLOPT." ON)
@@ -185,21 +174,41 @@ elseif(USE_PYGMO)
     add_subdirectory( "${PROJECTROOT}pagmo2/" )
 endif()
 
+#
+# NLOPT
+#
+if(USE_NLOPT)
+    if(PAGMO_AS_STATIC_LIB)
+        option(BUILD_SHARED_LIBS "Building NLOPT as static libraries" OFF)
+    else()
+        option(BUILD_SHARED_LIBS "Building NLOPT as shared libraries" ON)
+    endif()
+
+    option(NLOPT_TESTS "Enabling NLOPT tests" ON)
+
+    add_subdirectory( "${PROJECTROOT}/nlopt/")
+endif()
+
+
+#
+# Tudat and applications
+#
+option(BUILD_WITH_ESTIMATION_TOOLS "Build Tudat with state estimation functionality." ON)
 if(NOT BUILD_WITH_ESTIMATION_TOOLS)
  add_definitions(-DBUILD_WITH_ESTIMATION_TOOLS=0)
 else()
  add_definitions(-DBUILD_WITH_ESTIMATION_TOOLS=1)
 endif()
-
-#
-# Tudat and applications
-#
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
-add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
 
-if(USE_PAGMO)
-  add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx")
+if(USE_TUDAT_EXAMPLE_APPLICATIONS)
+   add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
+
+   if(USE_PAGMO)
+     add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/libraryExamples/PaGMOEx")
+   endif()
 endif()
+
 
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
