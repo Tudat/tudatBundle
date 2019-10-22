@@ -100,6 +100,7 @@ if(USE_CSPICE)
   set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-parentheses")
   set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-tautological-compare")
   set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-format")
+  set_property(TARGET cspice APPEND PROPERTY COMPILE_OPTIONS "-Wno-unsequenced")
 endif()
 
 #
