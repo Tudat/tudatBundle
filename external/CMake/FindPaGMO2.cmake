@@ -21,10 +21,10 @@
 
 macro(_pagmo_check_version)
   
-  message(STATUS "Checking for PaGMO in: ${PAGMO_BASE_PATH} and ${PAGMO_BUILD_PATH}" )
+  message(STATUS "Checking for PaGMO in: ${PAGMO_BASE_PATH}" )
 
   # Reads the version from a file in the build folder
-  file(READ "${PAGMO_BUILD_PATH}/include/pagmo/config.hpp" _pagmo_header)
+  file(READ "${PAGMO_BASE_PATH}/config.hpp.in" _pagmo_header)
 
   STRING(REGEX REPLACE "^.*define PAGMO_VERSION_MAJOR ([0-9]+).*" "\\1" PAGMO_VERSION_MAJOR "${_pagmo_header}")
   STRING(REGEX REPLACE "^.*define PAGMO_VERSION_MINOR ([0-9]+).*" "\\1" PAGMO_VERSION_MINOR "${_pagmo_header}")
@@ -47,7 +47,7 @@ macro(_pagmo_check_version)
   endif(NOT PAGMO_VERSION_OK)
 
   #Set include directories
-  set(PAGMO_INCLUDE_DIR "${PAGMO_BASE_PATH}/include/;${PAGMO_BUILD_PATH}/include/")
+  set(PAGMO_INCLUDE_DIR "${PAGMO_BASE_PATH}/include/")
 endmacro(_pagmo_check_version)
 
 
@@ -56,18 +56,21 @@ if(PAGMO_BASE_PATH)
   set(PAGMO_BASE_PATH_INIT ON)
 
 else (PAGMO_BASE_PATH)
+    message(STATUS "Trying to find Pagmo: ${PROJECT_SOURCE_DIR}")
+
   find_path(PAGMO_BASE_PATH NAMES pagmo-config.cmake.in
       PATHS
       ${PROJECT_SOURCE_DIR}/pagmo2
       ${PROJECT_SOURCE_DIR}/../pagmo2
+      ${PROJECT_SOURCE_DIR}/../../pagmo2
       ${PROJECT_SOURCE_DIR}/../../../pagmo2
       ${PROJECT_SOURCE_DIR}/../../../../pagmo2
       ${PROJECT_SOURCE_DIR}/../../../../../pagmo2
     )
 
     if(PAGMO_BASE_PATH)
-	set(PAGMO_BASE_PATH_INIT ON)
-	else(PAGMO_BUILD_PATH)
+        set(PAGMO_BASE_PATH_INIT ON)
+    else()
 	message(STATUS "Couldn't find PaGMO directory!")
     endif()
 
@@ -76,32 +79,7 @@ else (PAGMO_BASE_PATH)
 endif(PAGMO_BASE_PATH)
 
 
-if(PAGMO_BUILD_PATH)
-
-  set(PAGMO_BUILD_PATH_INIT ON)
-
-else (PAGMO_BUILD_PATH)
-  find_path(PAGMO_BUILD_PATH NAMES "include/pagmo/config.hpp"
-      PATHS
-      ${CMAKE_BINARY_DIR}/pagmo2
-      ${CMAKE_BINARY_DIR}/../pagmo2
-      ${CMAKE_BINARY_DIR}/../../../pagmo2
-      ${CMAKE_BINARY_DIR}/../../../../pagmo2
-      ${CMAKE_BINARY_DIR}/../../../../../pagmo2
-    )
-
-    if(PAGMO_BUILD_PATH)
-	set(PAGMO_BUILD_PATH_INIT ON)
-    else(PAGMO_BUILD_PATH)
-	message(STATUS "Couldn't find PaGMO build directory!")
-    endif()
-
-    mark_as_advanced(PAGMO_BUILD_PATH)
-  
-endif(PAGMO_BUILD_PATH)
-
-
-if(PAGMO_BASE_PATH_INIT AND PAGMO_BUILD_PATH_INIT)
+if(PAGMO_BASE_PATH_INIT)
     _pagmo_check_version()
     set(FOUND_PAGMO ${PAGMO_VERSION_OK})
 endif()
