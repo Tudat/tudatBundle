@@ -13,10 +13,10 @@
 if(NOT SOFA_BASE_PATH)
 find_path(SOFA_BASE_PATH NAMES sofa.h
   PATHS
-      ${TUDAT_BASE_PATH}/External
-      ${TUDAT_BASE_PATH}/../../..
-      ${TUDAT_BASE_PATH}/../..
-      ${TUDAT_BASE_PATH}/..
+      ${PROJECT_SOURCE_DIR}/External
+      ${PROJECT_SOURCE_DIR}/../../..
+      ${PROJECT_SOURCE_DIR}/../..
+      ${PROJECT_SOURCE_DIR}/..
   PATH_SUFFIXES sofa/src
 )
 endif()
