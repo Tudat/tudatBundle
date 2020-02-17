@@ -33,7 +33,7 @@ jobs:
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
       shell: bash
-#SEB  working-directory: ${{runner.workspace}}/build
+      working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
@@ -41,22 +41,20 @@ jobs:
 #SEB    cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 #SEB this is very quick and dirty to fix something in a submodule
       run: |
-        echo 'SEB PWD is'
-        echo ${PWD}
-        echo 'SEB PWD contains'
-        ls -l ${PWD}
         echo 'SEB .. contains'
         ls ..
         echo 'SEB ../tudatBundle/tudat/Tudat contains'
         ls ../tudatBundle/tudat/Tudat
+        echo 'SEB ../tudatBundle/tudatBundle contains'
+        ls ../tudatBundle/tudatBundle
         echo 'SEB Boost_ROOT is'
         echo ${Boost_ROOT}
         echo 'SEB BOOST_ROOT is'
         echo ${BOOST_ROOT}
+        cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
+        cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
         echo 'SEB BOOST_ROOT contains'
         ls -l ${BOOST_ROOT}
-        cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
-#SEB    cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
 
       env:
         CC: gcc
