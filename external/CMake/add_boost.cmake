@@ -74,6 +74,7 @@ set(BoostFolderName boost_${BoostFolderName})
 # Create directory in top-level source dir.
 set(BOOST_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/boost")
 set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+set(Boost_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/boost")
 set(BOOST_LIBRARYDIR "${BOOST_INCLUDEDIR}/stage/lib")
 set(Boost_NO_SYSTEM_PATHS ON)
 
