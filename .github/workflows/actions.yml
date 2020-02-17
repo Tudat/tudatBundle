@@ -20,9 +20,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Clone Submodules
-      shell: bash
-      run: git submodule update --init --recursive
+#SEB- name: Clone Submodules
+#SEB  shell: bash
+#SEB  run: git submodule update --init --recursive
 
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
@@ -43,9 +43,12 @@ jobs:
       run: |
         ls ..
         ls ../tudatBundle/tudat/Tudat
+        echo 'Boost_ROOT is'
         echo ${Boost_ROOT}
+        echo 'Boost_ROOT contains'
+        ls -l ${Boost_ROOT}
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
-        cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
+#SEB    cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
 
       env:
         CC: gcc
