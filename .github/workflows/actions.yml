@@ -48,7 +48,7 @@ jobs:
         ls ..
         echo 'SEB ../tudatBundle/tudat/Tudat contains'
         ls ../tudatBundle/tudat/Tudat
-        echo 'SEB ../tudatBundle/tudatBundle contains'
+        echo 'SEB ../tudatBundle contains'
         ls ../tudatBundle/tudatBundle
         echo 'SEB Boost_ROOT is'
         echo ${Boost_ROOT}
