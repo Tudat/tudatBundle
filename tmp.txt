@@ -110,7 +110,7 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME ON)
 
 # Find Boost libraries on local system.
-find_package(Boost 1.64.0 COMPONENTS date_time system unit_test_framework filesystem regex REQUIRED)
+find_package(Boost 1.72.0 COMPONENTS date_time system unit_test_framework filesystem regex REQUIRED)
 
 # Include Boost directories.
 # Set CMake flag to suppress Boost warnings (platform-dependent solution).
