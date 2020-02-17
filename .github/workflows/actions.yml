@@ -42,8 +42,8 @@ jobs:
 #SEB this is very quick and dirty to fix something in a submodule
       run: |
         ls ..
-        ls ../tudat/Tudat
-        cp -rf ../tmp.txt ../tudat/Tudat/CMakeLists.txt
+        ls ../tudatBundle/tudat/Tudat
+        cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
         cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
 
       env:
