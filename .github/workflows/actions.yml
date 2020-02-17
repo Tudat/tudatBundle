@@ -13,8 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
-        # os: [windows-latest, ubuntu-latest, macOS-latest]
+        os: [windows-latest, ubuntu-latest, macOS-latest]
         # https://github.com/onqtam/doctest/pull/285/files
 
     steps:
@@ -29,35 +28,29 @@ jobs:
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Configure CMake
-      # Use a bash shell so we can use the same syntax for environment variable
-      # access regardless of the host operating system
+    - name: Configure CMake linux en macOS
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-#SEB  run: |
-#SEB    cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 #SEB the cp is very quick and dirty to fix something in submodule Tudat
       run: |
-        echo 'SEB here I am'
-        pwd
-        ls -l
-        echo 'SEB .. contains'
-        ls ..
-        echo 'SEB ../tudatBundle/tudat/Tudat contains'
-        ls ../tudatBundle/tudat/Tudat
-        echo 'SEB ../tudatBundle contains'
-        ls ../tudatBundle
-        echo 'SEB Boost_ROOT is'
-        echo ${Boost_ROOT}
-        echo 'SEB BOOST_ROOT is'
-        echo ${BOOST_ROOT}
+        cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+      env:
+        CC: gcc
+        CXX: g++
+#SEB    Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
+
+    - name: Configure CMake Windows
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+#SEB the cp is very quick and dirty to fix something in submodule Tudat
+      run: |
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
         cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
-        echo 'SEB BOOST_ROOT contains'
-        ls -l ${BOOST_ROOT}
 
       env:
         CC: gcc
@@ -79,6 +72,10 @@ jobs:
         ls -l ../build
         echo 'SEB BOOST_ROOT contains'
         ls -l ${BOOST_ROOT}
+        echo 'SEB BOOST_ROOT/boost_1_64_0_GNU_8_1_0 contains'
+        ls -l ${BOOST_ROOT}/boost_1_64_0_GNU_8_1_0
+        echo 'SEB Boost_ROOT contains'
+        ls -l ${Boost_ROOT}
 
       env:
         CC: gcc
