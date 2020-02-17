@@ -56,7 +56,7 @@ jobs:
         echo 'SEB BOOST_ROOT is'
         echo ${BOOST_ROOT}
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
-        cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
         echo 'SEB BOOST_ROOT contains'
         ls -l ${BOOST_ROOT}
 
