@@ -41,6 +41,9 @@ jobs:
 #SEB    cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 #SEB this is very quick and dirty to fix something in a submodule
       run: |
+        echo 'SEB here I am'
+        pwd
+        ls -l
         echo 'SEB .. contains'
         ls ..
         echo 'SEB ../tudatBundle/tudat/Tudat contains'
