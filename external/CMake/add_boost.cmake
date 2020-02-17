@@ -15,6 +15,10 @@
 #        Contributor Agreement, version 1.0:
 #        http://www.maidsafe.net/licenses
 
+if(POLICY CMP0074)
+# do not look for the package at <PackageName>_ROOT environment variable
+  cmake_policy(SET CMP0074 OLD)
+endif()
 #
 # Hepler function(s)
 #
