@@ -29,6 +29,7 @@ jobs:
       run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Configure CMake linux en macOS
+      if: ! contains( matrix.os, 'windows' )
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
@@ -45,6 +46,7 @@ jobs:
 #SEB    Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
 
     - name: Configure CMake Windows
+      if: contains( matrix.os, 'windows' )
       shell: bash
       working-directory: ${{runner.workspace}}/build
 #SEB the cp is very quick and dirty to fix something in submodule Tudat
