@@ -61,7 +61,7 @@ jobs:
       env:
         CC: gcc
         CXX: g++
-        Boost_ROOT: ${{PWD}}/tudatBundle/boost/build
+        Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
