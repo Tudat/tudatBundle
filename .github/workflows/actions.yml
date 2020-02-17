@@ -16,7 +16,6 @@ jobs:
         os: [windows-latest]
         # os: [windows-latest, ubuntu-latest, macOS-latest]
         # https://github.com/onqtam/doctest/pull/285/files
-      fail-fast: false
 
     steps:
     - uses: actions/checkout@v1
@@ -72,6 +71,12 @@ jobs:
       run: |
         echo 'SEB ../tudatBundle contains'
         ls ../tudatBundle
+        echo 'SEB ../tudatBundle/external contains'
+        ls -l ../tudatBundle/external
+        echo 'SEB ../tudatBundle/tudat contains'
+        ls -l ../tudatBundle/tudat
+        echo 'SEB ../build contains'
+        ls -l ../build
         echo 'SEB BOOST_ROOT contains'
         ls -l ${BOOST_ROOT}
 
