@@ -47,8 +47,14 @@ jobs:
         ls ../tudatBundle/tudat/Tudat
         echo 'SEB Boost_ROOT is'
         echo ${Boost_ROOT}
-        echo 'SEB Boost_ROOT contains'
-        ls -l ${Boost_ROOT}
+        echo 'SEB BOOST_ROOT is'
+        echo ${BOOST_ROOT}
+        echo 'SEB BOOST_ROOT contains'
+        ls -l ${BOOST_ROOT}
+        echo 'SEB PWD is'
+        echo ${PWD}
+        echo 'SEB PWD contains'
+        ls -l ${PWD}
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
 #SEB    cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
 
