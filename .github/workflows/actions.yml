@@ -39,7 +39,6 @@ jobs:
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
 #SEB  run: |
 #SEB    cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-#SEB this is very quick and dirty to fix something in a submodule
       run: |
         echo 'SEB here I am'
         pwd
@@ -55,7 +54,9 @@ jobs:
         echo 'SEB BOOST_ROOT is'
         echo ${BOOST_ROOT}
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
-        cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
+#SEB this ^ is very quick and dirty to fix something in submodule Tudat
+#SEB    cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
+        cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE
         echo 'SEB BOOST_ROOT contains'
         ls -l ${BOOST_ROOT}
 
