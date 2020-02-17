@@ -43,13 +43,15 @@ jobs:
       run: |
         ls ..
         ls ../tudatBundle/tudat/Tudat
+        echo ${Boost_ROOT}
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
         cmake -G "MinGW Makefiles" -DUSEJSON=OFF -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B build
 
       env:
         CC: gcc
         CXX: g++
-        Boost_ROOT: ${PWD}/tudatBundle/boost
+        Boost_ROOT: ${PWD}/tudatBundle/boost/build
+        BOOST_ROOT: ${PWD}/tudatBundle/boost/build
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
