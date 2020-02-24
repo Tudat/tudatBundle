@@ -13,6 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        fail-fast: false
         os: [windows-latest, ubuntu-latest, macOS-latest]
         # https://github.com/onqtam/doctest/pull/285/files
 
@@ -29,7 +30,7 @@ jobs:
       run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Configure CMake linux en macOS
-      #SEB NOT!!!! if: contains( matrix.os, 'windows' )
+      if: ( ${{ matrix.os }} -notcontains 'windows' )
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
@@ -43,21 +44,21 @@ jobs:
       env:
         CC: gcc
         CXX: g++
-#SEB    Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
 
     - name: Configure CMake Windows
-      if: contains( matrix.os, 'windows' )
+      if: ( ${{ matrix.os }} -contains 'windows' )
       shell: bash
       working-directory: ${{runner.workspace}}/build
 #SEB the cp is very quick and dirty to fix something in submodule Tudat
       run: |
+        echo "::set-env name=BOOST_ROOT::"
+        echo "::set-env name=Boost_ROOT::"
         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
         cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
 
       env:
         CC: gcc
         CXX: g++
-        Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
 
     - name: Info after failure
       if: failure()
