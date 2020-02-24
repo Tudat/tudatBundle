@@ -30,7 +30,7 @@ jobs:
       run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Configure CMake linux en macOS
-      if: ( ${{ matrix.os }} -notcontains 'windows' )
+      if: ( ! contains(matrix.os, 'windows') )
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
@@ -46,7 +46,7 @@ jobs:
         CXX: g++
 
     - name: Configure CMake Windows
-      if: ( ${{ matrix.os }} -contains 'windows' )
+      if: ( contains(matrix.os, 'windows' ) )
       shell: bash
       working-directory: ${{runner.workspace}}/build
 #SEB the cp is very quick and dirty to fix something in submodule Tudat
