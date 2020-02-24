@@ -30,7 +30,7 @@ jobs:
       run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Configure CMake linux en macOS
-      if: ( ! contains(matrix.os, 'windows') )
+#       if: ( ! contains(matrix.os, 'windows') )
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
@@ -39,49 +39,45 @@ jobs:
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
-      env:
-        CC: gcc
-        CXX: g++
-
-    - name: Configure CMake Windows
-      if: ( contains(matrix.os, 'windows' ) )
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-#SEB the cp is very quick and dirty to fix something in submodule Tudat
-      run: |
-        echo "::set-env name=BOOST_ROOT::"
-        echo "::set-env name=Boost_ROOT::"
-        cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
-        cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
-
-      env:
-        CC: gcc
-        CXX: g++
-
-    - name: Info after failure
-      if: failure()
-      working-directory: ${{runner.workspace}}/build
-      shell: bash
-      run: |
-        echo 'SEB ../tudatBundle contains'
-        ls ../tudatBundle
-        echo 'SEB ../tudatBundle/external contains'
-        ls -l ../tudatBundle/external
-        echo 'SEB ../tudatBundle/tudat contains'
-        ls -l ../tudatBundle/tudat
-        echo 'SEB ../build contains'
-        ls -l ../build
-        echo 'SEB BOOST_ROOT contains'
-        ls -l ${BOOST_ROOT}
-        echo 'SEB BOOST_ROOT/boost_1_64_0_GNU_8_1_0 contains'
-        ls -l ${BOOST_ROOT}/boost_1_64_0_GNU_8_1_0
-        echo 'SEB Boost_ROOT contains'
-        ls -l ${Boost_ROOT}
-
-      env:
-        CC: gcc
-        CXX: g++
-        Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
+#     - name: Configure CMake Windows
+#       if: ( contains(matrix.os, 'windows' ) )
+#       shell: bash
+#       working-directory: ${{runner.workspace}}/build
+# #SEB the cp is very quick and dirty to fix something in submodule Tudat
+#       run: |
+#         echo "::set-env name=BOOST_ROOT::"
+#         echo "::set-env name=Boost_ROOT::"
+#         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
+#         cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
+# 
+#       env:
+#         CC: gcc
+#         CXX: g++
+# 
+#     - name: Info after failure
+#       if: failure()
+#       working-directory: ${{runner.workspace}}/build
+#       shell: bash
+#       run: |
+#         echo 'SEB ../tudatBundle contains'
+#         ls ../tudatBundle
+#         echo 'SEB ../tudatBundle/external contains'
+#         ls -l ../tudatBundle/external
+#         echo 'SEB ../tudatBundle/tudat contains'
+#         ls -l ../tudatBundle/tudat
+#         echo 'SEB ../build contains'
+#         ls -l ../build
+#         echo 'SEB BOOST_ROOT contains'
+#         ls -l ${BOOST_ROOT}
+#         echo 'SEB BOOST_ROOT/boost_1_64_0_GNU_8_1_0 contains'
+#         ls -l ${BOOST_ROOT}/boost_1_64_0_GNU_8_1_0
+#         echo 'SEB Boost_ROOT contains'
+#         ls -l ${Boost_ROOT}
+# 
+#       env:
+#         CC: gcc
+#         CXX: g++
+#         Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
