@@ -6,6 +6,8 @@ on: [push]
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
+  CC: gcc
+  CXX: g++
 
 jobs:
   build:
@@ -27,7 +29,8 @@ jobs:
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
       # We'll use this as our working directory for all subsequent commands
-      run: cmake -E make_directory ${{runner.workspace}}/build
+      run: |
+        cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Configure CMake linux en macOS
 #       if: ( ! contains(matrix.os, 'windows') )
@@ -49,41 +52,15 @@ jobs:
 #         echo "::set-env name=Boost_ROOT::"
 #         cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
 #         cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
-# 
-#       env:
-#         CC: gcc
-#         CXX: g++
-# 
-#     - name: Info after failure
-#       if: failure()
-#       working-directory: ${{runner.workspace}}/build
-#       shell: bash
-#       run: |
-#         echo 'SEB ../tudatBundle contains'
-#         ls ../tudatBundle
-#         echo 'SEB ../tudatBundle/external contains'
-#         ls -l ../tudatBundle/external
-#         echo 'SEB ../tudatBundle/tudat contains'
-#         ls -l ../tudatBundle/tudat
-#         echo 'SEB ../build contains'
-#         ls -l ../build
-#         echo 'SEB BOOST_ROOT contains'
-#         ls -l ${BOOST_ROOT}
-#         echo 'SEB BOOST_ROOT/boost_1_64_0_GNU_8_1_0 contains'
-#         ls -l ${BOOST_ROOT}/boost_1_64_0_GNU_8_1_0
-#         echo 'SEB Boost_ROOT contains'
-#         ls -l ${Boost_ROOT}
-# 
-#       env:
-#         CC: gcc
-#         CXX: g++
-#         Boost_ROOT: ${{runner.workspace}}/tudatBundle/boost/build
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --build . --target all --config $BUILD_TYPE
+      run: |
+        echo "::set-env name=BOOST_ROOT::"
+        echo "::set-env name=Boost_ROOT::"
+        cmake --build . --target all --config $BUILD_TYPE
 
     - name: Test
       working-directory: ${{runner.workspace}}/build
