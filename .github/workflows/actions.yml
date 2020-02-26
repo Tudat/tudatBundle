@@ -44,13 +44,13 @@ jobs:
       if: ( contains(matrix.os, 'windows' ) )
       shell: bash
       working-directory: ${{runner.workspace}}/build
-#SEB the cp is very quick and dirty to fix something in submodule Tudat
       # See https://github.com/actions/virtual-environments/issues/10
       # and https://stackoverflow.com/questions/3016448/how-can-i-get-cmake-to-find-my-alternative-boost-installation
+#SEB the cp is very quick and dirty to fix something in submodule Tudat
+#SEB cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
       run: |
         echo "::set-env name=BOOST_ROOT::"
         echo "::set-env name=Boost_ROOT::"
-#SEB cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
         cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
 
     - name: Build
