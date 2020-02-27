@@ -2,7 +2,7 @@ name: CMake
 # adapted from:
 # https://github.com/jherico/starter-workflows/blob/master/ci/cmake.yml
 
-on: [push]
+on: [push, pull_request]
 
 env:
   BUILD_TYPE: Release
@@ -11,13 +11,11 @@ env:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
-        # os: [windows-latest, ubuntu-latest, macOS-latest]
+        os: [windows-latest, ubuntu-latest, macOS-latest]
         # see https://github.com/onqtam/doctest/pull/285/files
 
     steps:
@@ -46,20 +44,15 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # See https://github.com/actions/virtual-environments/issues/10
-      # and https://stackoverflow.com/questions/3016448/how-can-i-get-cmake-to-find-my-alternative-boost-installation
-#SEB the cp is very quick and dirty to fix something in submodule Tudat
-#SEB cp -rf ../tudatBundle/tmp.txt ../tudatBundle/tudat/Tudat/CMakeLists.txt
+      # and https://stackoverflow.com/questions/3016448/
+      #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
       run: |
-        echo "::set-env name=BOOST_ROOT::"
-        echo "::set-env name=Boost_ROOT::"
         cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: |
-        echo "::set-env name=BOOST_ROOT::"
-        echo "::set-env name=Boost_ROOT::"
         cmake --build . --target all --config $BUILD_TYPE
 
     - name: Test
