@@ -57,9 +57,11 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Create Build Environment
-      shell: bash
       run: |
         cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Set Compiler
+      shell: bash
         if [ "${{ matrix.compiler }}" = "gcc" ]; then
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
