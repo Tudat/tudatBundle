@@ -71,6 +71,14 @@ jobs:
           echo "::set-env name=CXX::clang"
         fi
 
+    - name: Install clang on Windows
+      if: ( contains(matrix.os, 'windows') && contains(matrix.compiler, 'clang') )
+      shell: powershell
+      run: |
+        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+        scoop install llvm --global
+        echo "::set-env name=PATH::$env:PATH"
+
     - name: Configure CMake linux
       if: ( contains(matrix.os, 'ubuntu') )
       shell: bash
