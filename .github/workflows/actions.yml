@@ -16,7 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macOS-latest]
+        os: [windows-latest]
+        # os: [windows-latest, ubuntu-latest, macOS-latest]
         # see https://github.com/onqtam/doctest/pull/285/files
 
     steps:
@@ -51,7 +52,7 @@ jobs:
       run: |
         echo "::set-env name=BOOST_ROOT::"
         echo "::set-env name=Boost_ROOT::"
-        cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
+        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -S ../tudatBundle
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
