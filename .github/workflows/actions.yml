@@ -1,22 +1,53 @@
-name: CMake
+name: tudatBundleCI
 # adapted from:
 # https://github.com/jherico/starter-workflows/blob/master/ci/cmake.yml
+# and https://github.com/onqtam/doctest/pull/285/files
 
 on: [push, pull_request]
 
 env:
   BUILD_TYPE: Release
-  CC: gcc
-  CXX: g++
 
 jobs:
   build:
+    name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macOS-latest]
-        # see https://github.com/onqtam/doctest/pull/285/files
+        name: [
+          ubuntu-gcc,
+          ubuntu-clang,
+          macOS-gcc,
+          macOS-clang,
+          windows-gcc,
+          windows-clang,
+        ]
+
+        include:
+        - name: ubuntu-gcc
+          os: ubuntu-latest
+          compiler: gcc
+
+        - name: ubuntu-clang
+          os: ubuntu-latest
+          compiler: clang
+
+        - name: macOS-gcc
+          os: macOS-latest
+          compiler: gcc
+
+        - name: macOS-clang
+          os: macOS-latest
+          compiler: clang
+
+        - name: windows-gcc
+          os: windows-latest
+          compiler: gcc
+
+        - name: windows-clang
+          os: windows-latest
+          compiler: clang
 
     steps:
     - uses: actions/checkout@v1
@@ -28,9 +59,16 @@ jobs:
     - name: Create Build Environment
       run: |
         cmake -E make_directory ${{runner.workspace}}/build
+        if [ "${{ matrix.compiler }}" = "gcc" ]; then
+          echo "::set-env name=CC::gcc"
+          echo "::set-env name=CXX::g++"
+        else
+          echo "::set-env name=CC::clang"
+          echo "::set-env name=CXX::clang"
+        fi
 
-    - name: Configure CMake linux en macOS
-      if: ( ! contains(matrix.os, 'windows') )
+    - name: Configure CMake linux
+      if: ( contains(matrix.os, 'ubuntu') )
       shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to
@@ -38,6 +76,15 @@ jobs:
       # CMake 3.13 and higher.  
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+    - name: Configure CMake linux en macOS
+      if: ( contains(matrix.os, 'macOS') )
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      # see https://stackoverflow.com/questions/24380456/
+      # how-can-i-make-cmake-use-gcc-instead-of-clang-on-mac-os-x/24380618
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX
 
     - name: Configure CMake Windows
       if: ( contains(matrix.os, 'windows' ) )
