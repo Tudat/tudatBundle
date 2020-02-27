@@ -60,8 +60,9 @@ jobs:
       run: |
         cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Set Compiler
+    - name: Set Compiler Environment
       shell: bash
+      run: |
         if [ "${{ matrix.compiler }}" = "gcc" ]; then
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
