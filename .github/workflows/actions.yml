@@ -69,6 +69,7 @@ jobs:
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
+        choco install msys2
         echo "::set-env name=PATH::$env:PATH"
 
     - name: Set Compiler Environment
@@ -115,7 +116,6 @@ jobs:
         # and https://stackoverflow.com/questions/3016448/
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
         cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
-        fi
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
