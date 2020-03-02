@@ -104,7 +104,7 @@ jobs:
           # See https://github.com/actions/virtual-environments/issues/10
           # and https://stackoverflow.com/questions/3016448/
           #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
-        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
+          cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
         fi
 
     - name: Build
