@@ -3,7 +3,12 @@ name: tudatBundleCI
 # https://github.com/jherico/starter-workflows/blob/master/ci/cmake.yml
 # and https://github.com/onqtam/doctest/pull/285/files
 
-on: [push, pull_request]
+on: 
+  - push
+  - pull_request
+  - schedule:
+    # every Saturday at 04:00
+    - cron: '0 4 * * 6'
 
 env:
   BUILD_TYPE: Release
@@ -56,7 +61,7 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: |
-        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND"
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -D_GLIBCXX_USE_CXX11_ABI=0
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
