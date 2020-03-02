@@ -90,21 +90,31 @@ jobs:
       run: |
         cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Configure CMake
+    - name: Configure CMake linux
+      if: contains(matrix.os, 'ubuntu')
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: |
-        if [ "${{ matrix.os }}" -contains "ubuntu" ]; then
-          cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
-        elif [ "${{ matrix.os }}" -contains "macOS" ]; then
-          # see https://stackoverflow.com/questions/24380456/
-          # how-can-i-make-cmake-use-gcc-instead-of-clang-on-mac-os-x/24380618
-          cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX
-        else 
-          # See https://github.com/actions/virtual-environments/issues/10
-          # and https://stackoverflow.com/questions/3016448/
-          #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
-          cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
+        cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
+
+    - name: Configure CMake macos
+      if: contains(matrix.os, 'macos')
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        # see https://stackoverflow.com/questions/24380456/
+        # how-can-i-make-cmake-use-gcc-instead-of-clang-on-mac-os-x/24380618
+        cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX
+
+    - name: Configure CMake windows
+      if: contains(matrix.os, 'windows')
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        # See https://github.com/actions/virtual-environments/issues/10
+        # and https://stackoverflow.com/questions/3016448/
+        #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
+        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
         fi
 
     - name: Build
