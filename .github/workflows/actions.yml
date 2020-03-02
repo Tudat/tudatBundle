@@ -4,8 +4,12 @@ name: tudatBundleCI
 # and https://github.com/onqtam/doctest/pull/285/files
 
 on: 
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
   schedule:
     # every Saturday at 04:00
     - cron: '0 4 * * 6'
