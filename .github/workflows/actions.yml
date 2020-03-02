@@ -6,7 +6,7 @@ name: tudatBundleCI
 on: 
   - push
   - pull_request
-  - schedule:
+  schedule:
     # every Saturday at 04:00
     - cron: '0 4 * * 6'
 
