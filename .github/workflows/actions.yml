@@ -65,12 +65,13 @@ jobs:
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
-      shell: powershell
+      shell: bash
       run: |
-        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        scoop install llvm --global
-        choco install msys2
+        conda install -c conda-forge clang
         echo "::set-env name=PATH::$env:PATH"
+      # shell: powershell
+        # Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+        # scoop install llvm --global
 
     - name: Set Compiler Environment
       shell: bash
