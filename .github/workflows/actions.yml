@@ -94,9 +94,9 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: |
-        if [ "${{ matix.os }}" -contains "ubuntu" ]; then
+        if [ "${{ matrix.os }}" -contains "ubuntu" ]; then
           cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
-        elif [ "${{ matix.os }}" -contains "macOS" ]; then
+        elif [ "${{ matrix.os }}" -contains "macOS" ]; then
           # see https://stackoverflow.com/questions/24380456/
           # how-can-i-make-cmake-use-gcc-instead-of-clang-on-mac-os-x/24380618
           cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX
