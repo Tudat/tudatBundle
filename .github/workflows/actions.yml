@@ -70,10 +70,10 @@ jobs:
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
         echo "SEB PATH before"
-        echo $PATH
+        echo $env:PATH
         echo "::set-env name=PATH::$env:PATH"
         echo "SEB PATH after"
-        echo $PATH
+        echo $env:PATH
 
     - name: Set Compiler Environment
       shell: bash
