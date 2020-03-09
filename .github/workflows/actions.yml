@@ -62,13 +62,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Install Qt on Windows
+    - name: debug on Windows
 # this step sets up unistd.h
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
       shell: bash
       run: |
-        find /d/ -name 'unistd.h'
+        echo $PATH
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
