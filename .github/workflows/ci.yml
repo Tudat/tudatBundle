@@ -24,7 +24,7 @@ jobs:
           os: windows-2019
           compiler: clang
 
-  steps:
+    steps:
     - uses: actions/checkout@v1
 
     - name: Install (Windows)
