@@ -95,8 +95,10 @@ jobs:
         echo $PATH
         echo 'SEB mingw64 contains'
         ls /mingw64
-        echo 'SEB mingw64 bin contains'
-        ls /mingw64/bin
+        echo 'SEB mingw64 lib contains'
+        ls /mingw64/lib
+        echo 'SEB mingw64 lib gcc contains'
+        ls /mingw64/lib/gcc
         sadgf    
 
     - name: Clone Submodules
