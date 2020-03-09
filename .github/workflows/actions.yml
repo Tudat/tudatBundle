@@ -69,7 +69,11 @@ jobs:
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
+        echo "SEB PATH before"
+        echo $PATH
         echo "::set-env name=PATH::$env:PATH"
+        echo "SEB PATH after"
+        echo $PATH
 
     - name: Set Compiler Environment
       shell: bash
@@ -81,12 +85,12 @@ jobs:
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
         fi
+        echo "SEB PATH"
+        echo $PATH
         echo 'SEB mingw'
         ls /mingw64
         echo 'SEB mingw lib'
         ls /mingw64/lib
-        echo 'SEB whcih llvm'
-        which llvm
         echo 'SEB which clang'
         which clang
         asdf
