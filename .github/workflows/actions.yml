@@ -87,6 +87,10 @@ jobs:
         fi
         echo "SEB where is my gcc?"
         which gcc
+        echo 'SEB whats in the gcc directory'
+        ls /c/ProgramData/Chocolatey/bin/gcc
+        echo 'SEB is there and include'
+        ls /c/ProgramData/Chocolatey/bin/gcc/include
         echo "SEB PATH"
         echo $PATH
         echo 'SEB mingw'
