@@ -26,11 +26,11 @@ jobs:
       fail-fast: false
       matrix:
         name: [
-          ubuntu-gcc,
-          ubuntu-clang,
-          macOS-gcc,
-          macOS-clang,
-          windows-gcc,
+#         ubuntu-gcc,
+#         ubuntu-clang,
+#         macOS-gcc,
+#         macOS-clang,
+#         windows-gcc,
           windows-clang,
         ]
 
@@ -65,13 +65,12 @@ jobs:
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
-      shell: bash
+      shell: powershell
       run: |
-        conda install -c conda-forge clang
+        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+        scoop install ninja --global
+        scoop install llvm --global
         echo "::set-env name=PATH::$env:PATH"
-      # shell: powershell
-        # Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        # scoop install llvm --global
 
     - name: Set Compiler Environment
       shell: bash
