@@ -1,0 +1,58 @@
+name: CI
+
+on: push
+
+jobs:
+ci:
+  name: ${{ matrix.name }}
+  runs-on: ${{ matrix.os }}
+
+  env:
+    CMAKE_GENERATOR: Ninja
+
+  strategy:
+    fail-fast: false
+    matrix:
+      # Github Actions requires a single row to be added to the build matrix.
+      # See https://help.github.com/en/articles/workflow-syntax-for-github-actions.
+      name: [
+        windows-2019-clang,
+      ]
+
+      include:
+        - name: windows-2019-clang
+            os: windows-2019
+            compiler: clang
+
+  steps:
+    - uses: actions/checkout@v1
+
+    - name: Install (Windows)
+      if: runner.os == 'Windows'
+      shell: powershell
+      run: |
+        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+        scoop install ninja --global
+
+        scoop install llvm --global
+
+        echo "::set-env name=CC::clang"
+        echo "::set-env name=CXX::clang++"
+
+        # Scoop modifies the PATH so we make the modified PATH global.
+        echo "::set-env name=PATH::$env:PATH"
+
+    - name: Configure x64
+      if: runner.os == 'Windows'
+      run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
+
+    - name: Clone Submodules
+      shell: bash
+      run: git submodule update --init --recursive
+
+    - name: Build & Test Release x64
+      run: |
+        cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DDOCTEST_TEST_MODE=COMPARE
+        cmake --build build
+        cd build
+        ctest
