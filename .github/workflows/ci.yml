@@ -10,19 +10,19 @@ jobs:
     env:
       CMAKE_GENERATOR: Ninja
 
-  strategy:
-    fail-fast: false
-    matrix:
-      # Github Actions requires a single row to be added to the build matrix.
-      # See https://help.github.com/en/articles/workflow-syntax-for-github-actions.
-      name: [
-        windows-2019-clang,
-      ]
+    strategy:
+      fail-fast: false
+      matrix:
+        # Github Actions requires a single row to be added to the build matrix.
+        # See https://help.github.com/en/articles/workflow-syntax-for-github-actions.
+        name: [
+          windows-2019-clang,
+        ]
 
-      include:
-        - name: windows-2019-clang
-          os: windows-2019
-          compiler: clang
+        include:
+          - name: windows-2019-clang
+            os: windows-2019
+            compiler: clang
 
     steps:
       - uses: actions/checkout@v1
@@ -52,6 +52,7 @@ jobs:
 
       - name: Build & Test Release x64
         run: |
+          cmake -E remove_directory build
           cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DDOCTEST_TEST_MODE=COMPARE
           cmake --build build
           cd build
