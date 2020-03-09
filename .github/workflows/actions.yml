@@ -62,13 +62,21 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Install Qt on Windows
+# this step sets up unistd.h
+      if: ( contains(matrix.os, 'windows') &&
+            contains(matrix.compiler, 'clang') )
+      shell: powershell
+      run: |
+        curl -vLo qt-unified-windows-x86-online.exe http://download.qt.io/official_releases/online_installers/qt-unified-windows-x86-online.exe
+        qt-unified-windows-x86-online.exe --verbose --script ..\tudatBundle\.github\workflows\qt.qs
+
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
       shell: powershell
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        scoop install ninja --global
         scoop install llvm --global
         echo "::set-env name=PATH::$env:PATH"
 
