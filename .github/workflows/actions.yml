@@ -61,6 +61,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
@@ -87,6 +88,12 @@ jobs:
             contains(matrix.compiler, 'clang') )
       run: |
         .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
+
+    - name: Debug info
+      shell: bash
+      run: |
+        echo $PATH
+        sadgf    
 
     - name: Clone Submodules
       shell: bash
