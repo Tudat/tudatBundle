@@ -3,12 +3,12 @@ name: CI
 on: push
 
 jobs:
-ci:
-  name: ${{ matrix.name }}
-  runs-on: ${{ matrix.os }}
+  ci:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
 
-  env:
-    CMAKE_GENERATOR: Ninja
+    env:
+      CMAKE_GENERATOR: Ninja
 
   strategy:
     fail-fast: false
