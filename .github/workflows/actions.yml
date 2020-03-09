@@ -95,12 +95,10 @@ jobs:
         echo $PATH
         echo 'SEB mingw64 contains'
         ls /mingw64
-        echo 'SEB mingw64 lib contains'
-        ls /mingw64/lib
         echo 'SEB ls root'
         ls /
         echo 'SEB do a find'
-        find / -name 'unistd.h'
+        find ../../.. -name 'unistd.h'
         sadgf    
 
     - name: Clone Submodules
