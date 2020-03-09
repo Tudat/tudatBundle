@@ -85,6 +85,8 @@ jobs:
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
         fi
+        echo "SEB where is my gcc?"
+        which gcc
         echo "SEB PATH"
         echo $PATH
         echo 'SEB mingw'
