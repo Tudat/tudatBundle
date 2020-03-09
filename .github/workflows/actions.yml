@@ -97,8 +97,10 @@ jobs:
         ls /mingw64
         echo 'SEB mingw64 lib contains'
         ls /mingw64/lib
-        echo 'SEB mingw64 lib gcc contains'
-        ls /mingw64/lib/gcc
+        echo 'SEB ls root'
+        ls /
+        echo 'SEB do a find'
+        find / -name 'unistd.h'
         sadgf    
 
     - name: Clone Submodules
