@@ -66,6 +66,7 @@ jobs:
             contains(matrix.compiler, 'clang') )
       run: |
         choco install -y llvm
+        echo "::set-env name=PATH::$env:PATH"
 #SEB      shell: powershell
 #SEB        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 #SEB        scoop install llvm --global
