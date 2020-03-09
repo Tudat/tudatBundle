@@ -30,7 +30,7 @@ jobs:
 #         ubuntu-clang,
 #         macOS-gcc,
 #         macOS-clang,
-          windows-gcc,
+#         windows-gcc,
           windows-clang,
         ]
 
@@ -65,11 +65,14 @@ jobs:
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
-      shell: powershell
+#SEB  shell: powershell
       run: |
-        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        scoop install llvm --global
-        echo "::set-env name=PATH::$env:PATH"
+        choco install llvm
+        which gcc
+        which clang
+#SEB    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+#SEB    scoop install llvm --global
+#SEB    echo "::set-env name=PATH::$env:PATH"
 
     - name: Set Compiler Environment
       shell: bash
