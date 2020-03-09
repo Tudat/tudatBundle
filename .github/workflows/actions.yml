@@ -61,15 +61,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
-      shell: powershell
       run: |
-        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        scoop install llvm --global
-        echo "::set-env name=PATH::$env:PATH"
+        curl -fsSL -o LLVM9.exe https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe
+        7z x LLVM9.exe -y -o"C:/Program Files/LLVM"
+
+#SEB next try: choco install llvm
+#SEB      shell: powershell
+#SEB        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+#SEB        scoop install llvm --global
+#SEB        echo "::set-env name=PATH::$env:PATH"
 
     - name: Set Compiler Environment
       shell: bash
