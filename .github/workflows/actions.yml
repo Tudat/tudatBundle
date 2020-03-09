@@ -30,7 +30,7 @@ jobs:
 #         ubuntu-clang,
 #         macOS-gcc,
 #         macOS-clang,
-#         windows-gcc,
+          windows-gcc,
           windows-clang,
         ]
 
@@ -97,8 +97,6 @@ jobs:
         ls /mingw64
         echo 'SEB ls root'
         ls /
-        echo 'SEB do a find'
-        find ../../.. -name 'unistd.h'
         sadgf    
 
     - name: Clone Submodules
