@@ -93,6 +93,10 @@ jobs:
       shell: bash
       run: |
         echo $PATH
+        echo 'SEB mingw64 contains'
+        ls /mingw64
+        echo 'SEB mingw64 bin contains'
+        ls /mingw64/bin
         sadgf    
 
     - name: Clone Submodules
