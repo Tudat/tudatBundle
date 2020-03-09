@@ -85,23 +85,6 @@ jobs:
           echo "::set-env name=CXX::g++"
         fi
 
-    - name: Configure Windows x64
-      # this step sets up unistd.h
-      if: ( contains(matrix.os, 'windows') &&
-            contains(matrix.compiler, 'clang') )
-      run: |
-        .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
-
-    - name: Debug info
-      shell: bash
-      run: |
-        echo $PATH
-        echo 'SEB mingw64 contains'
-        ls /mingw64
-        echo 'SEB ls root'
-        ls /
-        sadgf    
-
     - name: Clone Submodules
       shell: bash
       run: git submodule update --init --recursive
