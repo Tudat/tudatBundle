@@ -21,8 +21,8 @@ ci:
 
       include:
         - name: windows-2019-clang
-            os: windows-2019
-            compiler: clang
+          os: windows-2019
+          compiler: clang
 
   steps:
     - uses: actions/checkout@v1
