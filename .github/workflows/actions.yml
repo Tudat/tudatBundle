@@ -69,11 +69,12 @@ jobs:
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
-        echo "SEB find environment variables"
-        dir env:
+        echo "SEB define POSIX_WIN"
+        echo "::seb-env name=POSIX_WIN::C:\ProgramData\Chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\include"
         echo "SEB PATH before"
         echo $env:PATH
         echo "::set-env name=PATH::$env:PATH"
+        echo "::set-env name=PATH::PATH:POSIX_WIN"
         echo "SEB PATH after"
         echo $env:PATH
         asdf
