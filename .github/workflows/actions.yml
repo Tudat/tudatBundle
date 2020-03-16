@@ -30,7 +30,7 @@ jobs:
 #         ubuntu-clang,
 #         macOS-gcc,
 #         macOS-clang,
-          windows-gcc,
+#         windows-gcc,
           windows-clang,
         ]
 
