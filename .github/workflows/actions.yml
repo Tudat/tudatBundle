@@ -75,7 +75,7 @@ jobs:
         echo "::set-env name=PATH::$env:PATH"
         # Define the location of the POSIX header file and add/prepend to PATH
         echo "::set-env name=POSIX_WIN::C:\ProgramData\Chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\include"
-        echo "::add-path::$env:POSIX_WIN"
+        echo "::add-path::C:\ProgramData\Chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\include"
 
     - name: Set Compiler Environment
       shell: bash
