@@ -59,6 +59,9 @@ jobs:
           os: windows-latest
           compiler: clang
 
+    steps:
+    - uses: actions/checkout@v1
+
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
