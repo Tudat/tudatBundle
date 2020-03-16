@@ -67,7 +67,7 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         echo 'SEB echo PATH'
-        echo ${PATH}
+        echo $PATH
         asdf
 
     - name: Install clang on Windows
