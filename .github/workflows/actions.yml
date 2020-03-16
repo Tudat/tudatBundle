@@ -66,12 +66,12 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: |
-        echo 'SEB'
-        ls
         echo 'SEB set POSIX_WIN'
-        echo "::set-env name=POSIX_WIN::C:"
-        echo 'SEB ls POSIX_WIN'
-        ls ${POSIX_WIN}
+        echo "::set-env name=POSIX_WIN::C:/"
+        echo 'SEB echo POSIX_WIN'
+        echo ${POSIX_WIN}
+        echo 'SEB echo PATH'
+        echo ${PATH}
         asdf
 
     - name: Install clang on Windows
