@@ -67,7 +67,7 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         echo 'SEB set POSIX_WIN'
-        echo "::set-env name=POSIX_WIN::/c/"
+        echo "::set-env name=POSIX_WIN::/"
         echo 'SEB echo POSIX_WIN'
         echo ${POSIX_WIN}
         echo 'SEB echo PATH'
