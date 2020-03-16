@@ -65,7 +65,8 @@ jobs:
     - name: Configure debug
       shell: bash
       run: |
-        echo $PATH
+        echo "::set-env name=POSIX_WIN::/c"
+        echo $POSIX_WIN
         asdf
 
     - name: Install clang on Windows
