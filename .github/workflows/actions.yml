@@ -59,21 +59,6 @@ jobs:
           os: windows-latest
           compiler: clang
 
-    steps:
-    - uses: actions/checkout@v1
-
-    - name: Configure debug
-      shell: bash
-      run: |
-        echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
-
-    - name: ls debug
-      shell: bash
-      run: |
-        echo $POSIX_WIN
-        ls $POSIX_WIN
-        asdf
-
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
@@ -84,7 +69,7 @@ jobs:
         # Scoop modifies the PATH so we make the modified PATH global.
         echo "::set-env name=PATH::$env:PATH"
         # Create environment variable POSIX_WIN
-        echo "::set-env name=POSIX_WIN::C:\ProgramData\Chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\include"
+        echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
 
     - name: Set Compiler Environment
       shell: bash
