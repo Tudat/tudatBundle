@@ -85,6 +85,16 @@ jobs:
           echo "::set-env name=CXX::g++"
         fi
 
+    - name: Configure debug
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        echo 'SEB POSIX_WIN contains'
+        ls $POSIX_WIN
+        echo 'SEB POSIX_WIN/sys contains'
+        ls ${POSIX_WIN}/sys
+        asdf
+
     - name: Clone Submodules
       shell: bash
       run: git submodule update --init --recursive
