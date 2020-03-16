@@ -62,6 +62,20 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Configure debug
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        echo 'SEB ls'
+        ls "/c/ProgramData"
+        echo 'SEB and in Windows format'
+        ls "C:\ProgramData"
+        echo 'SEB POSIX_WIN contains'
+        ls $POSIX_WIN
+        echo 'SEB POSIX_WIN/sys contains'
+        ls ${POSIX_WIN}/sys
+        asdf
+
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
@@ -84,16 +98,6 @@ jobs:
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
         fi
-
-    - name: Configure debug
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: |
-        echo 'SEB POSIX_WIN contains'
-        ls $POSIX_WIN
-        echo 'SEB POSIX_WIN/sys contains'
-        ls ${POSIX_WIN}/sys
-        asdf
 
     - name: Clone Submodules
       shell: bash
