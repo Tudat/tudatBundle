@@ -69,8 +69,8 @@ jobs:
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
-        echo "SEB find unistd.h"
-        echo '#include <unistd.h>' | gcc -E -x c -
+        echo "SEB find environment variables"
+        env
         echo "SEB PATH before"
         echo $env:PATH
         echo "::set-env name=PATH::$env:PATH"
