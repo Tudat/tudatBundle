@@ -71,8 +71,8 @@ jobs:
         scoop install llvm --global
         # Scoop modifies the PATH so we make the modified PATH global.
         echo "::set-env name=PATH::$env:PATH"
-        # Prepend the location of the POSIX header file to PATH
-        echo "::add-path::C:\ProgramData\Chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\include"
+        # Create environment variable POSIX_WIN
+        echo "::set-env name=POSIX_WIN::C:\ProgramData\Chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\include"
 
     - name: Set Compiler Environment
       shell: bash
