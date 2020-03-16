@@ -66,9 +66,7 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: |
-        echo 'SEB echo PATH'
         echo $PATH
-        asdf
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
