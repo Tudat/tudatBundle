@@ -89,7 +89,9 @@ set(Boost_USE_STATIC_LIBS ON)
 # Check if C POSIX library is present
 #
 include(CheckIncludeFiles)
-include_directories(AFTER ${POSIX_WIN})
+if(EXISTS "${POSIX_WIN}/unistd.h")
+  file(COPY "${POSIX_WIN}/unistd.h" DESTINATION "${BOOST_INCLUDEDIR}")
+endif()
 # usage: CHECK_INCLUDE_FILES (<header> <RESULT_VARIABLE> )
 unset(HAVE_UNISTD_H CACHE)
 check_include_files(unistd.h HAVE_UNISTD_H)
