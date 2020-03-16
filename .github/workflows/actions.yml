@@ -65,7 +65,7 @@ jobs:
     - name: Configure debug
       shell: bash
       run: |
-        echo "::set-env name=POSIX_WIN::/c"
+        echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
 
     - name: ls debug
       shell: bash
