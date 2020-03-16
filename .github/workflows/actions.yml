@@ -64,9 +64,9 @@ jobs:
 
     - name: Configure debug
       shell: bash
-      working-directory: ${{runner.workspace}}/build
       run: |
         echo $PATH
+        asdf
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
