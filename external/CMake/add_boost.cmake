@@ -81,6 +81,10 @@ set(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
 file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
 file(MAKE_DIRECTORY "${BoostCacheDir}")
 
+if(IS_DIRECTORY "$ENV{POSIX_WIN}")
+    file(COPY "$ENV{POSIX_WIN}" DESTINATION "${BOOST_INCLUDEDIR}")
+endif()
+
 # Force using static libraries as the build libraries are not installed to the system
 # or the libs dir added to the path.
 set(Boost_USE_STATIC_LIBS ON)
@@ -97,12 +101,7 @@ if(NOT HAVE_UNISTD_H)
         execute_process(COMMAND xcode-select;-p OUTPUT_VARIABLE Output ERROR_VARIABLE Error)
         message(FATAL_ERROR "C POSIX libraries not found on system. From command line execute:\nxcode-select --install.\n${Output}\n${Error}\n")
     else()
-	if(IS_DIRECTORY "$ENV{POSIX_WIN}")
-            file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}/stage")
-	    file(COPY "$ENV{POSIX_WIN}" DESTINATION "${BOOST_INCLUDEDIR}/stage/include")
-	else()
-            message(FATAL_ERROR "C POSIX libraries not found on system. Please (re)install development environment.")
-        endif()
+        message(FATAL_ERROR "C POSIX libraries not found on system. Please (re)install development environment.")
     endif()
 endif()
 
