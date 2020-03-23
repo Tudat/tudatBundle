@@ -135,7 +135,7 @@ jobs:
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
         echo 'SEB here is my PATH in CMake action'
         echo $PATH
-        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DGCC_INSTALL_PREFIX=/c/ProgramData/Chocolatey/bin
+        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DGCC_INSTALL_PREFIX=/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/bin
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
