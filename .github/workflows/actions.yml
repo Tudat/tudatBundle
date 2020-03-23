@@ -80,6 +80,11 @@ jobs:
       run: |
         choco install llvm
         echo "::set-env name=PATH::$env:PATH"
+        echo 'SEB new PATH after llvm installation'
+        echo $env:PATH
+        echo "::add-path::c/Program Files/LLVM/bin"
+        echo 'SEB after add-path'
+        echo $env:PATH
 
     - name: Set Compiler Environment
       shell: bash
