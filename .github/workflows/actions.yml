@@ -69,7 +69,8 @@ jobs:
         echo $PATH
         echo 'SEB ls mingw64'
         ls -lR /mingw64
-        asdf
+        echo 'SEB ls /c/ProgramData/Chocolatey'
+        ls -lR /c/ProgramData/Chocolatey
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
