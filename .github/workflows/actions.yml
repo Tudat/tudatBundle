@@ -73,7 +73,6 @@ jobs:
         scoop install llvm --global
         echo 'after installing clang PATH is'
         echo $env:PATH
-        asdf
         # Scoop modifies the PATH so we make the modified PATH global.
         # echo "::set-env name=PATH::$env:PATH"
         # Create environment variable POSIX_WIN
@@ -89,6 +88,8 @@ jobs:
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
         fi
+        echo $PATH
+        asdf
 
     - name: Clone Submodules
       shell: bash
