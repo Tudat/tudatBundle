@@ -35,25 +35,25 @@ jobs:
         ]
 
         include:
-        - name: ubuntu-gcc
-          os: ubuntu-latest
-          compiler: gcc
+#       - name: ubuntu-gcc
+#         os: ubuntu-latest
+#         compiler: gcc
 
-        - name: ubuntu-clang
-          os: ubuntu-latest
-          compiler: clang
+#       - name: ubuntu-clang
+#         os: ubuntu-latest
+#         compiler: clang
 
-        - name: macOS-gcc
-          os: macOS-latest
-          compiler: gcc
+#       - name: macOS-gcc
+#         os: macOS-latest
+#         compiler: gcc
 
-        - name: macOS-clang
-          os: macOS-latest
-          compiler: clang
+#       - name: macOS-clang
+#         os: macOS-latest
+#         compiler: clang
 
-        - name: windows-gcc
-          os: windows-latest
-          compiler: gcc
+#       - name: windows-gcc
+#         os: windows-latest
+#         compiler: gcc
 
         - name: windows-clang
           os: windows-latest
@@ -68,7 +68,12 @@ jobs:
       shell: powershell
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+        echo 'before installing clang PATH is'
+        echo $env:PATH
         scoop install llvm --global
+        echo 'after installing clang PATH is'
+        echo $env:PATH
+        asdf
         # Scoop modifies the PATH so we make the modified PATH global.
         # echo "::set-env name=PATH::$env:PATH"
         # Create environment variable POSIX_WIN
