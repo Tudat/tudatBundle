@@ -68,10 +68,7 @@ jobs:
         echo 'SEB here is my PATH in Debug action'
         echo $PATH
         echo 'SEB ls mingw64'
-        ls -l /mingw64
-        echo 'SEB ls mingw64/bin'
-        ls -l /mingw64/bin
-        find /mingw64 -name 'gcc'
+        ls -lR /mingw64
         asdf
 
     - name: Install clang on Windows
