@@ -62,33 +62,24 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-#   - name: Debug Path
-#     shell: bash
+#   - name: Install clang on Windows
+#     if: ( contains(matrix.os, 'windows') &&
+#           contains(matrix.compiler, 'clang') )
+#     shell: powershell
 #     run: |
-#       echo 'SEB here is my PATH in Debug action'
-#       echo $PATH
-#       echo 'SEB ls mingw64'
-#       ls -lR /mingw64
-#       echo 'SEB ls /c/ProgramData/Chocolatey'
-#       ls -lR /c/ProgramData/Chocolatey
+#       Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+#       scoop install llvm --global
+#       # Scoop modifies the PATH so we make the modified PATH global.
+#       echo "::set-env name=PATH::$env:PATH"
+#       # echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
             contains(matrix.compiler, 'clang') )
       shell: powershell
       run: |
-        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        scoop install llvm --global
-        # Scoop modifies the PATH so we make the modified PATH global.
+        choco install llvm
         echo "::set-env name=PATH::$env:PATH"
-        # echo "::add-path::/c/Program Files/Git/usr/bin"
-        # echo "::add-path::/c/Program Files/Git/mingw64/bin"
-        # echo "::add-path::/c/Program Files/Git/cmd"
-        # echo "::add-path::/c/Program Files/Git/bin"
-        # echo "::add-path::/c/Users/runneradmin/scoop/shims"
-        # echo "::add-path::/c/ProgramData/scoop/shims"
-        # Create environment variable POSIX_WIN
-        # echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
 
     - name: Set Compiler Environment
       shell: bash
@@ -135,13 +126,12 @@ jobs:
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
         echo 'SEB here is my PATH in CMake action'
         echo $PATH
-        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DGCC_INSTALL_PREFIX=/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/bin
+        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: |
-        asdf SEB
         cmake --build . --target all --config $BUILD_TYPE
 
     - name: Test
