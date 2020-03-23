@@ -30,7 +30,7 @@ jobs:
 #         ubuntu-clang,
 #         macOS-gcc,
 #         macOS-clang,
-#         windows-gcc,
+          windows-gcc,
           windows-clang,
         ]
 
@@ -51,9 +51,9 @@ jobs:
 #         os: macOS-latest
 #         compiler: clang
 
-#       - name: windows-gcc
-#         os: windows-latest
-#         compiler: gcc
+        - name: windows-gcc
+          os: windows-latest
+          compiler: gcc
 
         - name: windows-clang
           os: windows-latest
@@ -61,6 +61,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
+    - name: Debug Path
+      shell: bash
+      run: |
+        echo 'SEB here is my PATH in Debug action'
+        echo $PATH
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
@@ -71,7 +77,6 @@ jobs:
         scoop install llvm --global
         # Scoop modifies the PATH so we make the modified PATH global.
         echo "::set-env name=PATH::$env:PATH"
-        echo "::add-path ::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
         # echo "::add-path::/c/Program Files/Git/usr/bin"
         # echo "::add-path::/c/Program Files/Git/mingw64/bin"
         # echo "::add-path::/c/Program Files/Git/cmd"
@@ -124,7 +129,7 @@ jobs:
         # See https://github.com/actions/virtual-environments/issues/10
         # and https://stackoverflow.com/questions/3016448/
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
-        echo 'SEB here is my PATH'
+        echo 'SEB here is my PATH in CMake action'
         echo $PATH
         cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
 
@@ -132,6 +137,7 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: |
+        asdf SEB
         cmake --build . --target all --config $BUILD_TYPE
 
     - name: Test
