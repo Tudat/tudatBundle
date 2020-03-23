@@ -70,9 +70,9 @@ jobs:
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
         # Scoop modifies the PATH so we make the modified PATH global.
-        echo "::set-env name=PATH::$env:PATH"
+        # echo "::set-env name=PATH::$env:PATH"
         # Create environment variable POSIX_WIN
-        echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
+        # echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
 
     - name: Set Compiler Environment
       shell: bash
