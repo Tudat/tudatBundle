@@ -17,6 +17,7 @@ on:
 
 env:
   BUILD_TYPE: Release
+  EXTEND_PATH: ''
 
 jobs:
   build:
@@ -68,12 +69,9 @@ jobs:
       shell: powershell
       run: |
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-        echo 'before installing clang PATH is'
-        echo $env:PATH
         scoop install llvm --global
-        echo 'after installing clang PATH is'
-        echo $env:PATH
         # Scoop modifies the PATH so we make the modified PATH global.
+        echo "::set-env name=EXTEND_PATH::/c/ProgramData/scoop/shims"
         # echo "::set-env name=PATH::$env:PATH"
         # Create environment variable POSIX_WIN
         # echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
@@ -88,6 +86,10 @@ jobs:
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
         fi
+        echo 'before extending'
+        echo $PATH
+        echo ":set-env name=PATH::$EXTEND_PATH:$PATH"
+        echo 'after extending'
         echo $PATH
         asdf
 
