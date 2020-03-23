@@ -70,13 +70,14 @@ jobs:
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
         scoop install llvm --global
         # Scoop modifies the PATH so we make the modified PATH global.
-        echo "::add-path::/c/Program Files/Git/usr/bin"
-        echo "::add-path::/c/Program Files/Git/mingw64/bin"
-        echo "::add-path::/c/Program Files/Git/cmd"
-        echo "::add-path::/c/Program Files/Git/bin"
-        echo "::add-path::/c/Users/runneradmin/scoop/shims"
-        echo "::add-path::/c/ProgramData/scoop/shims"
-        # echo "::set-env name=PATH::$env:PATH"
+        echo "::set-env name=PATH::$env:PATH"
+        echo "::add-path ::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
+        # echo "::add-path::/c/Program Files/Git/usr/bin"
+        # echo "::add-path::/c/Program Files/Git/mingw64/bin"
+        # echo "::add-path::/c/Program Files/Git/cmd"
+        # echo "::add-path::/c/Program Files/Git/bin"
+        # echo "::add-path::/c/Users/runneradmin/scoop/shims"
+        # echo "::add-path::/c/ProgramData/scoop/shims"
         # Create environment variable POSIX_WIN
         # echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
 
