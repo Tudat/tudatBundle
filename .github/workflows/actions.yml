@@ -30,7 +30,7 @@ jobs:
 #         ubuntu-clang,
 #         macOS-gcc,
 #         macOS-clang,
-          windows-gcc,
+#         windows-gcc,
           windows-clang,
         ]
 
@@ -51,9 +51,9 @@ jobs:
 #         os: macOS-latest
 #         compiler: clang
 
-        - name: windows-gcc
-          os: windows-latest
-          compiler: gcc
+#       - name: windows-gcc
+#         os: windows-latest
+#         compiler: gcc
 
         - name: windows-clang
           os: windows-latest
@@ -67,6 +67,12 @@ jobs:
       run: |
         echo 'SEB here is my PATH in Debug action'
         echo $PATH
+        echo 'SEB ls mingw64'
+        ls -l /mingw64
+        echo 'SEB ls mingw64/bin'
+        ls -l /mingw64/bin
+        find /mingw64 -name 'gcc'
+        asdf
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
@@ -131,7 +137,7 @@ jobs:
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
         echo 'SEB here is my PATH in CMake action'
         echo $PATH
-        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
+        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DGCC_INSTALL_PREFIX=/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
