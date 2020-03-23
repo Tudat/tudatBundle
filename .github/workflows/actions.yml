@@ -86,14 +86,6 @@ jobs:
           echo "::set-env name=CC::gcc"
           echo "::set-env name=CXX::g++"
         fi
-        echo ":set-env name=PATH::$EXTEND_PATH:$PATH"
-
-    - name: Check path
-      shell: bash
-      run: |
-        echo 'after extending'
-        echo $PATH
-        asdf
 
     - name: Clone Submodules
       shell: bash
@@ -127,6 +119,9 @@ jobs:
         # See https://github.com/actions/virtual-environments/issues/10
         # and https://stackoverflow.com/questions/3016448/
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
+        echo ":set-env name=PATH::$EXTEND_PATH:$PATH"
+        echo 'after extending'
+        echo $PATH
         cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
 
     - name: Build
