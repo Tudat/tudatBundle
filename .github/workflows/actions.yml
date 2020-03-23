@@ -62,15 +62,15 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Debug Path
-      shell: bash
-      run: |
-        echo 'SEB here is my PATH in Debug action'
-        echo $PATH
-        echo 'SEB ls mingw64'
-        ls -lR /mingw64
-        echo 'SEB ls /c/ProgramData/Chocolatey'
-        ls -lR /c/ProgramData/Chocolatey
+#   - name: Debug Path
+#     shell: bash
+#     run: |
+#       echo 'SEB here is my PATH in Debug action'
+#       echo $PATH
+#       echo 'SEB ls mingw64'
+#       ls -lR /mingw64
+#       echo 'SEB ls /c/ProgramData/Chocolatey'
+#       ls -lR /c/ProgramData/Chocolatey
 
     - name: Install clang on Windows
       if: ( contains(matrix.os, 'windows') &&
