@@ -81,10 +81,6 @@ set(BoostCacheDir   "${BOOST_INCLUDEDIR}/build")
 file(MAKE_DIRECTORY "${BOOST_INCLUDEDIR}")
 file(MAKE_DIRECTORY "${BoostCacheDir}")
 
-if(IS_DIRECTORY "$ENV{POSIX_WIN}")
-    file(COPY "$ENV{POSIX_WIN}" DESTINATION "${BOOST_INCLUDEDIR}")
-endif()
-
 # Force using static libraries as the build libraries are not installed to the system
 # or the libs dir added to the path.
 set(Boost_USE_STATIC_LIBS ON)

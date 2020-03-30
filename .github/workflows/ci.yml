@@ -26,43 +26,46 @@ jobs:
       fail-fast: false
       matrix:
         name: [
-#         ubuntu-gcc,
-#         ubuntu-clang,
-#         macOS-gcc,
-#         macOS-clang,
-#         windows-gcc,
-          windows-clang,
+          ubuntu-gcc,
+          ubuntu-clang,
+          macOS-gcc,
+          macOS-clang,
+          windows-gcc,
+#         windows-clang,
         ]
 
         include:
-#       - name: ubuntu-gcc
-#         os: ubuntu-latest
-#         compiler: gcc
+        - name: ubuntu-gcc
+          os: ubuntu-latest
+          compiler: gcc
 
-#       - name: ubuntu-clang
-#         os: ubuntu-latest
-#         compiler: clang
-
-#       - name: macOS-gcc
-#         os: macOS-latest
-#         compiler: gcc
-
-#       - name: macOS-clang
-#         os: macOS-latest
-#         compiler: clang
-
-#       - name: windows-gcc
-#         os: windows-latest
-#         compiler: gcc
-
-        - name: windows-clang
-          os: windows-latest
+        - name: ubuntu-clang
+          os: ubuntu-latest
           compiler: clang
+
+        - name: macOS-gcc
+          os: macOS-latest
+          compiler: gcc
+
+        - name: macOS-clang
+          os: macOS-latest
+          compiler: clang
+
+        - name: windows-gcc
+          os: windows-latest
+          compiler: gcc
+
+#       - name: windows-clang
+#         os: windows-latest
+#         compiler: clang
 
     steps:
     - uses: actions/checkout@v1
 
 #   - name: Install clang on Windows
+#   This step leads to the error "C POSIX libraries not found on system.
+#   Please (re)install development environment." from
+#   external/CMake/add_boost.cmake
 #     if: ( contains(matrix.os, 'windows') &&
 #           contains(matrix.compiler, 'clang') )
 #     shell: powershell
@@ -71,25 +74,6 @@ jobs:
 #       scoop install llvm --global
 #       # Scoop modifies the PATH so we make the modified PATH global.
 #       echo "::set-env name=PATH::$env:PATH"
-#       # echo "::set-env name=POSIX_WIN::/c/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/include"
-
-    - name: Install clang on Windows
-      if: ( contains(matrix.os, 'windows') &&
-            contains(matrix.compiler, 'clang') )
-      shell: powershell
-      run: |
-        choco install llvm
-        echo "::set-env name=PATH::$env:PATH"
-        # echo "::add-path::c/Program Files/LLVM/bin"
-        # echo 'SEB after add-path'
-        # echo $env:PATH
-        echo 'SEB refresh the env vars'
-        refreshenv
-        echo 'SEB new PATH after llvm installation'
-        echo $env:PATH
-        echo 'SEB here are all the env vars'
-        dir env:
-        asdf
 
     - name: Set Compiler Environment
       shell: bash
@@ -134,8 +118,6 @@ jobs:
         # See https://github.com/actions/virtual-environments/issues/10
         # and https://stackoverflow.com/questions/3016448/
         #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
-        echo 'SEB here is my PATH in CMake action'
-        echo $PATH
         cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
 
     - name: Build
