@@ -1,0 +1,132 @@
+name: tudatBundleCI
+# adapted from:
+# https://github.com/jherico/starter-workflows/blob/master/ci/cmake.yml
+# and
+# https://github.com/onqtam/doctest/blob/master/.github/workflows/main.yml
+
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    # every Monday at 04:00
+    - cron: '0 4 * * 1'
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        name: [
+          ubuntu-gcc,
+          ubuntu-clang,
+          macOS-gcc,
+          macOS-clang,
+          windows-gcc,
+#         windows-clang,
+        ]
+
+        include:
+        - name: ubuntu-gcc
+          os: ubuntu-latest
+          compiler: gcc
+
+        - name: ubuntu-clang
+          os: ubuntu-latest
+          compiler: clang
+
+        - name: macOS-gcc
+          os: macOS-latest
+          compiler: gcc
+
+        - name: macOS-clang
+          os: macOS-latest
+          compiler: clang
+
+        - name: windows-gcc
+          os: windows-latest
+          compiler: gcc
+
+#       - name: windows-clang
+#         os: windows-latest
+#         compiler: clang
+
+    steps:
+    - uses: actions/checkout@v1
+
+#   - name: Install clang on Windows
+#   This step leads to the error "C POSIX libraries not found on system.
+#   Please (re)install development environment." from
+#   external/CMake/add_boost.cmake
+#     if: ( contains(matrix.os, 'windows') &&
+#           contains(matrix.compiler, 'clang') )
+#     shell: powershell
+#     run: |
+#       Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+#       scoop install llvm --global
+#       # Scoop modifies the PATH so we make the modified PATH global.
+#       echo "::set-env name=PATH::$env:PATH"
+
+    - name: Set Compiler Environment
+      shell: bash
+      run: |
+        if [ "${{ matrix.compiler }}" = "clang" ]; then
+          echo "::set-env name=CC::clang"
+          echo "::set-env name=CXX::clang++"
+        else
+          echo "::set-env name=CC::gcc"
+          echo "::set-env name=CXX::g++"
+        fi
+
+    - name: Clone Submodules
+      shell: bash
+      run: git submodule update --init --recursive
+
+    - name: Create Build Environment
+      run: |
+        cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Configure CMake linux
+      if: contains(matrix.os, 'ubuntu')
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
+
+    - name: Configure CMake macos
+      if: contains(matrix.os, 'macos')
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        # see https://stackoverflow.com/questions/24380456/
+        # how-can-i-make-cmake-use-gcc-instead-of-clang-on-mac-os-x/24380618
+        cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX
+
+    - name: Configure CMake windows
+      if: contains(matrix.os, 'windows')
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        # See https://github.com/actions/virtual-environments/issues/10
+        # and https://stackoverflow.com/questions/3016448/
+        #     how-can-i-get-cmake-to-find-my-alternative-boost-installation
+        cmake -G "MinGW Makefiles" -DBoost_NO_BOOST_CMAKE=TRUE -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -B . -S ../tudatBundle
+
+    - name: Build
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: |
+        cmake --build . --target all --config $BUILD_TYPE
+
+    - name: Test
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: ctest -C $BUILD_TYPE
