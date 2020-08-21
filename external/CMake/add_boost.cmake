@@ -16,7 +16,7 @@
 #        http://www.maidsafe.net/licenses
 
 #
-# Hepler function(s)
+# Helper function(s)
 #
 # Gets the path to the temp directory using the same method as Boost.Filesystem:
 # http://www.boost.org/doc/libs/release/libs/filesystem/doc/reference.html#temp_directory_path
