@@ -203,6 +203,9 @@ endif()
 set(TUDAT_BUILD_DIR "${PROJECTROOT}/tudat")
 add_subdirectory( "${PROJECTROOT}/tudat/Tudat/")
 
+#
+# Example applications
+#
 if(USE_TUDAT_EXAMPLE_APPLICATIONS)
    add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/satellitePropagatorExamples/SatellitePropagatorExamples/")
 
@@ -211,5 +214,23 @@ if(USE_TUDAT_EXAMPLE_APPLICATIONS)
    endif()
 endif()
 
-
 add_subdirectory( "${PROJECTROOT}/tudatExampleApplications/templateApplication/TemplateApplication")
+
+#
+# User-written applications
+#
+file(GLOB_RECURSE
+     tudat_applications_list
+     "${PROJECTROOT}/tudatApplications/CMakeLists.txt")
+
+set(prev_dir ":/") # <- illegal name on all platforms
+foreach(pth ${tudat_applications_list})
+    get_filename_component(dir "${pth}" DIRECTORY)
+    # Ensure that only the topmost CMakeLists.txt of each subdir tree gets included. E.g.,
+    # in situations where both "dir/subdir/CMakeLists.txt" and
+    # "dir/subdir/subsubdir/CMakeLists.txt" exist, only include "dir/subdir/CMakeLists.txt"
+    if (NOT "${dir}" MATCHES "^${prev_dir}.*")
+        add_subdirectory("${dir}")
+    endif()
+    set(prev_dir "${dir}")
+endforeach()
